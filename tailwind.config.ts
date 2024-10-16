@@ -4,6 +4,7 @@ const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/containers/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
@@ -28,6 +29,8 @@ const config: Config = {
         "gray-4": "#808080",
         "gray-5": "444444",
         "gray-6": "1A1A1A",
+        "gray-7": "7B7B7B",
+        main_banner_bg: "F15114",
       },
 
       fontSize: {
