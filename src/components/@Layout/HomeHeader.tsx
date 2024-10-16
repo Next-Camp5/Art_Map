@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import SearchIcon from "@/public/svgs/Search.svg";
 
-const Header = () => {
+const HomeHeader = () => {
   const [selected, setSelected] = useState(false);
 
   return (
@@ -40,4 +40,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HomeHeader;
