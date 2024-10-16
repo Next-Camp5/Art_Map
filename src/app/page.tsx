@@ -1,5 +1,11 @@
+import HomeContainer from "@/containers/HomeContainer";
+
 const Home = () => {
-  return <div>아트맵 서비스 시작</div>;
+  return (
+    <>
+      <HomeContainer />
+    </>
+  );
 };
 
 export default Home;
