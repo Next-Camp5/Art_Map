@@ -2,9 +2,11 @@
 import Button from "@/components/common/Botton";
 import CheckOn from "../../public/image/checkboxon.png";
 import CheckOff from "../../public/image/checkboxoff.png";
+import SNSLoginButton from "@/components/common/snsButton/SNSLoginButton";
 
 import { useState } from "react";
 import Image from "next/image";
+
 const Login = () => {
   const [checked, setChecked] = useState(false);
   const handleCheck = () => {
@@ -132,6 +134,13 @@ const Login = () => {
             <p className="text-[12px] text-gray-4 pt-[20px]">
               소셜 계정으로 간편 로그인/회원가입
             </p>
+            <div>
+              {/* <SNSLoginButton social="KAKAO" />
+              <SNSLoginButton social="KAKAO" />
+              <SNSLoginButton social="KAKAO" />
+              <SNSLoginButton social="KAKAO" />
+              <SNSLoginButton social="KAKAO" /> */}
+            </div>
           </div>
         </div>
       </div>
