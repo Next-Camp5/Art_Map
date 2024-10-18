@@ -1,10 +1,14 @@
+import Link from "next/link";
 import Image from "next/image";
 
 import displayThumbnail from "@/public/images/displayThumbnail.png";
 
 const HorizontalExhibitionSection = () => {
   return (
-    <div className="flex items-center gap-2.5 w-[343px]">
+    <Link
+      href="/exhibition/detail"
+      className="flex items-center gap-2.5 w-[343px]"
+    >
       <Image
         src={displayThumbnail}
         alt={`전시 이미지`}
@@ -20,7 +24,7 @@ const HorizontalExhibitionSection = () => {
           <p className="text-sm text-gray-4">2021.08.01 ~ 2021.09.09</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

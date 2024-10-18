@@ -5,10 +5,11 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import displayThumbnail from "@/public/images/displayThumbnail.png";
+import Link from "next/link";
 
 const ExhibitionSlide = (index: number) => (
   <SwiperSlide key={index}>
-    <div className="flex flex-col gap-2.5">
+    <Link href="/exhibition/detail" className="flex flex-col gap-2.5">
       {/* exhibition thumbnail */}
       <Image
         src={displayThumbnail}
@@ -28,7 +29,7 @@ const ExhibitionSlide = (index: number) => (
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   </SwiperSlide>
 );
 

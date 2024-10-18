@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 
 import SearchIcon from "@/public/svgs/Search.svg";
+import Button from "../common/Botton";
+import BaseIcon from "../Icon/BaseIcon";
 
 const HomeHeader = () => {
   const [selected, setSelected] = useState(false);
@@ -36,6 +38,11 @@ const HomeHeader = () => {
       <button type="button" aria-label="검색">
         <Image src={SearchIcon} alt="검색" />
       </button>
+      {/* <Button size="SM" color="point" border={false}>
+        <BaseIcon>
+          <Image src={SearchIcon} alt="검색" />
+        </BaseIcon>
+      </Button> */}
     </header>
   );
 };
