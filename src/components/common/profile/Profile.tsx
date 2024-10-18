@@ -22,13 +22,19 @@ const Profile = ({ size, imageSrc }: Props) => {
   if (imageSrc && !error) {
     return (
       <div
-        className={`h-[${SIZE_MAP[size]}px] w-[${SIZE_MAP[size]}px] rounded-full relative overflow-hidden`}
+        className={` rounded-full relative overflow-hidden`}
+        style={{ height: `${SIZE_MAP[size]}px`, width: `${SIZE_MAP[size]}px` }}
       >
         {isLoading && (
           <div
-            className={`bg-primary h-[${SIZE_MAP[size]}px] w-[${SIZE_MAP[size]}px] absolute z-10`}
+            className={`bg-primary  absolute z-10`}
+            style={{
+              height: `${SIZE_MAP[size]}px`,
+              width: `${SIZE_MAP[size]}px`,
+            }}
           ></div>
         )}
+
         <Image
           src={imageSrc}
           alt="유저 프로필"
