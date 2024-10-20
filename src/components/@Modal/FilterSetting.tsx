@@ -1,4 +1,5 @@
 import DropdownButton from "./components/DropdownButton";
+import ToggleButton from "../common/toggleButton/ToggleButton";
 
 const FilterSetting = () => {
   return (
@@ -16,9 +17,7 @@ const FilterSetting = () => {
       </div>
       <div className="flex justify-between items-center px-4 border-b border-gray-200 h-[60px]">
         <span className="text-md font-medium text-gray-6">전시중</span>
-        <button type="button" aria-pressed="false" aria-label="전시중 토글">
-          토글
-        </button>
+        <ToggleButton />
       </div>
       <DropdownButton label="지역" items={["서울", "부산", "대구"]} />
       <DropdownButton label="카테고리" items={["미술", "음악", "연극"]} />

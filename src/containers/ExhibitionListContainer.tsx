@@ -1,7 +1,7 @@
 import HomeHeader from "@/components/@Layout/HomeHeader";
+import FilterSetting from "@/components/@Modal/FilterSetting";
 import ExhibitionGallery from "@/components/@Home/ExhibitionGallery";
 import ExhibitionListNavigation from "@/components/@Layout/ExhibitionListNavigation";
-import FilterSetting from "@/components/@Modal/FilterSetting";
 
 const ExhibitionListContainer = () => {
   return (
