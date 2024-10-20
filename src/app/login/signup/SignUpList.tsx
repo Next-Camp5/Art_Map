@@ -3,8 +3,14 @@
 import { useState } from "react";
 import Button from "@/components/common/Botton";
 import SelectionButton from "./SelectionButton"; // Import the SelectionButton
+import { useRouter } from "next/navigation";
 
 const SignUp = () => {
+  const router = useRouter();
+
+  const handleNavigation = () => {
+    router.push("signup/emailveri"); // Navigates to the signup page
+  };
   const [click, setClick] = useState("");
   const [next, setNext] = useState(false);
 
@@ -288,6 +294,8 @@ const SignUp = () => {
           color={next === true ? "primary" : "gray-3"}
           border={false}
           children={"다음"}
+          onClick={next === true ? handleNavigation : undefined}
+          disabled={!next}
         />
       </div>
     </>

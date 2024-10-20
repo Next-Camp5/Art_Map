@@ -1,10 +1,18 @@
 "use client";
+
 import Button from "@/components/common/Botton";
 // import SNSLoginButton from "@/components/common/snsButton/SNSLoginButton";
 import LoginPage from "./LoginPage";
 import AutoLogin from "./AutoLogin";
 
+import { useRouter } from "next/navigation";
+
 const Login = () => {
+  const router = useRouter();
+
+  const handleNavigation = () => {
+    router.push("login/signup"); // Navigates to the signup page
+  };
   return (
     <>
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -27,7 +35,12 @@ const Login = () => {
           </div>
           {/*회원가입*/}
           <div className="flex items-center justify-center m-4 mt-[20px]">
-            <p className="text-gray-4 underline">회원가입</p>
+            <p
+              className="text-gray-4 underline cursor-pointer"
+              onClick={handleNavigation}
+            >
+              회원가입
+            </p>
           </div>
           {/*sns버튼*/}
           <div className="flex items-center justify-center m-4 mt-[20px] border-t border-gray-2">

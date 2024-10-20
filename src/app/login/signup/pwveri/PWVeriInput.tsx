@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@/components/common/Botton";
+import { useRouter } from "next/navigation";
 import { ChangeEvent, useState, FormEvent } from "react";
 
 interface VeriFieldProps {
@@ -16,6 +17,12 @@ const PWInputField = ({ type, pattern }: VeriFieldProps) => {
   const [recheck, setRecheck] = useState("");
   const [revalid, setRevalid] = useState(true);
   const [resubmitted, setResubmitted] = useState(false);
+
+  const router = useRouter();
+
+  const handleNavigation = () => {
+    router.push("profile");
+  };
 
   const handleValid = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -56,9 +63,9 @@ const PWInputField = ({ type, pattern }: VeriFieldProps) => {
     setResubmitted(true);
     const inputElement = e.currentTarget.querySelector("input");
     if (inputElement && inputElement.value.match(password)) {
-      setValid(true);
+      setRevalid(true);
     } else {
-      setValid(false);
+      setRevalid(false);
     }
   };
 
@@ -136,6 +143,12 @@ const PWInputField = ({ type, pattern }: VeriFieldProps) => {
           }`}
           border={false}
           children={"다음"}
+          onClick={
+            submitted && valid && resubmitted && revalid
+              ? handleNavigation
+              : undefined
+          }
+          disabled={!submitted || !valid || !resubmitted || !revalid}
         />
       </div>
     </>

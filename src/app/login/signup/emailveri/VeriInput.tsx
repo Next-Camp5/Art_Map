@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@/components/common/Botton";
+import { useRouter } from "next/navigation";
 import { ChangeEvent, useState, FormEvent } from "react";
 
 interface VeriFieldProps {
@@ -13,6 +14,11 @@ const EmailInputField = ({ type, placeholder, pattern }: VeriFieldProps) => {
   const [email, setEmail] = useState("");
   const [valid, setValid] = useState(true);
   const [submitted, setSubmitted] = useState(false);
+  const router = useRouter();
+
+  const handleNavigation = () => {
+    router.push("pwveri");
+  };
 
   const handleValid = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -71,6 +77,8 @@ const EmailInputField = ({ type, placeholder, pattern }: VeriFieldProps) => {
           color={`${submitted && valid ? "primary" : "gray-3"}`}
           border={false}
           children={"이메일 인증"}
+          onClick={submitted && valid ? handleNavigation : undefined}
+          disabled={!submitted || !valid}
         />
       </div>
     </>
