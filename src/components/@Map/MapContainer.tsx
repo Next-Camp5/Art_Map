@@ -9,9 +9,8 @@ import {
 
 const MapContainer = () => {
   const [loading, error] = useKakaoLoader({
-    appkey: "6c7a5cd242ae0375d38aeab10ba8a53f",
+    appkey: process.env.NEXT_PUBLIC_KAKAO_MAP_API_KEY as string,
   });
-
   return (
     <Map
       center={{
