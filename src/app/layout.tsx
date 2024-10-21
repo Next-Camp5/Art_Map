@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { Noto_Sans_KR } from "next/font/google";
+import MainNavigation from "@/components/@Layout/Navigation/MainNavigation";
 
 const notoSansKR = Noto_Sans_KR({
   preload: false,
@@ -23,7 +24,10 @@ export default function RootLayout({
   return (
     <html lang="ko-KR">
       <body className={`${notoSansKR.className} antialiased bg-[#e4e4e4]`}>
-        {children}
+        <div className="w-[375px] mx-auto bg-white z-0 relative">
+          {children}
+          <MainNavigation />
+        </div>
       </body>
     </html>
   );

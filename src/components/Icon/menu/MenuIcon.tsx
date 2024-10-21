@@ -4,18 +4,16 @@ import { FillIconProps } from "../types/icon";
 
 interface MenuIconProps extends FillIconProps {
   href: string;
-  iconName: string;
+  children: React.ReactNode;
 }
 
-const MenuIcon = ({ href, iconName, children }: MenuIconProps) => {
+const MenuIcon = ({ href, children }: MenuIconProps) => {
   return (
     <Link
       href={href}
-      aria-label={iconName}
       className="flex flex-col items-center justify-center gap-1 w-14"
     >
       {children}
-      <p className="text-xs font-medium">{iconName}</p>
     </Link>
   );
 };
