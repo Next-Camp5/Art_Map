@@ -11,7 +11,8 @@ const ProfilePicture = () => {
     }
   };
 
-  const handleClear = () => {
+  const handleClear = (e: React.MouseEvent<SVGElement>) => {
+    e.stopPropagation();
     setImagePreview(null);
   };
   return (
