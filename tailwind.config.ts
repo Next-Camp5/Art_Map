@@ -30,7 +30,6 @@ const config: Config = {
         "gray-5": "444444",
         "gray-6": "1A1A1A",
         "gray-7": "7B7B7B",
-        main_banner_bg: "F15114",
       },
 
       fontSize: {
