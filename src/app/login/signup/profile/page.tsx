@@ -3,6 +3,7 @@
 import Button from "@/components/common/Botton";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState, FormEvent } from "react";
+import ProfilePicture from "./ProfilePicture";
 
 const Profile = () => {
   const [profile, setProfile] = useState("");
@@ -42,55 +43,7 @@ const Profile = () => {
           <p className="text-[20px] mt-[104px] font-bold m-4 ">
             프로필 정보를 입력하세요.
           </p>
-          <div className="relative flex justify-center mt-[60px] m-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="70"
-              height="70"
-              viewBox="0 0 70 70"
-              fill="none"
-            >
-              <circle cx="35" cy="35" r="34.5" fill="white" stroke="#F0F0F0" />
-              <circle
-                cx="35"
-                cy="24.5"
-                r="8.75"
-                stroke="#1A1A1A"
-                strokeWidth="3.5"
-              />
-              <path
-                d="M50.75 52.5C50.75 42.4484 43.6985 38.5 35 38.5C26.3015 38.5 19.25 42.4484 19.25 52.5"
-                stroke="#1A1A1A"
-                strokeWidth="3.5"
-                strokeLinecap="round"
-              />
-            </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              className="absolute top-[50px] right-[136px] z-10"
-            >
-              <path
-                d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
-                fill="black"
-              />
-              <path
-                d="M9.66602 5.166V14.166"
-                stroke="white"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-              <path
-                d="M14.166 9.666H5.16602"
-                stroke="white"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
+          <ProfilePicture />
           <p className="mt-[50px] font-bold text-sm m-4">닉네임</p>
           <div
             className={`flex items-center justify-center border-b-2 ${
