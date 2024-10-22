@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -10,11 +10,9 @@ import BaseIcon from "@/components/Icon/BaseIcon";
 import { BaseCheckBoxProps } from "./types/checkbox";
 
 const CircleCheckBox = ({ active = false, onClick }: BaseCheckBoxProps) => {
-  const [isActive, setIsActive] = useState<boolean>(active);
   const checkRef = useRef<SVGPathElement>(null);
 
   const handleClick = () => {
-    setIsActive(!isActive);
     onClick?.();
   };
 
@@ -35,10 +33,10 @@ const CircleCheckBox = ({ active = false, onClick }: BaseCheckBoxProps) => {
         ease: "power2.inOut",
       }
     );
-    if (isActive) {
+    if (active) {
       tl.restart();
     }
-  }, [isActive]);
+  }, [active]);
 
   return (
     <BaseIcon width={24} height={24} onClick={handleClick}>
@@ -50,7 +48,7 @@ const CircleCheckBox = ({ active = false, onClick }: BaseCheckBoxProps) => {
 
       <path
         d="M24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24C18.6274 24 24 18.6274 24 12Z"
-        className={`${isActive ? "fill-point" : ""}`}
+        className={`${active ? "fill-point" : ""}`}
       />
 
       <path
@@ -61,7 +59,7 @@ const CircleCheckBox = ({ active = false, onClick }: BaseCheckBoxProps) => {
         stroke-linecap="round"
         stroke-linejoin="round"
       />
-      {!isActive && (
+      {!active && (
         <path
           d="M6.38867 11.7523L10.7297 15.9652L16.9977 8.61621"
           className="stroke-gray-3"
