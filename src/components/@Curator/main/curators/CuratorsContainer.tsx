@@ -9,7 +9,7 @@ const CuratorsContainer = () => {
   return (
     <div className="mb-[50px]">
       <h2 className="text-lg font-bold mb-[20px]">큐레이터</h2>
-      <Swiper slidesPerView={4.4} spaceBetween={15}>
+      <Swiper slidesPerView={4.4} spaceBetween={15} slidesOffsetAfter={10}>
         {Array.from({ length: 20 }).map((_, idx) => (
           <SwiperSlide key={idx}>
             <Curator key={idx} />
