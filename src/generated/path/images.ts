@@ -1,18 +1,18 @@
 export const MY_IMAGES = {
   SOCIAL: {
     LINK: {
-      KAKAO: { src: "/images/social/link/kakao.png", alt: "카카오 링크" },
-      NAVER: { src: "/images/social/link/naver.png", alt: "네이버 링크" },
+      KAKAO: { src: "/social/link/kakao.png", alt: "카카오 링크" },
+      NAVER: { src: "/social/link/naver.png", alt: "네이버 링크" },
       INSTAGRAM: {
-        src: "/images/social/link//instagram.png",
+        src: "/social/link//instagram.png",
         alt: "인스타그램 링크",
       },
       FACEBOOK: {
-        src: "/images/social/link/facebook.png",
+        src: "/social/link/facebook.png",
         alt: "페이스북 링크",
       },
       HOMEPAGE: {
-        src: "/images/social/link/homepage.png",
+        src: "/social/link/homepage.png",
         alt: "홈페이지 링크",
       },
     },

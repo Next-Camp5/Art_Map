@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 import BaseIcon from "@/components/Icon/BaseIcon";
 
 import { BaseCheckBoxProps } from "./types/checkbox";

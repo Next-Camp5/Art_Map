@@ -1,13 +1,32 @@
-"use client";
+import FilterRemote from "../FilterRemote";
 
-import { useState } from "react";
-import FilterModal from "./FilterModal";
-
-const FilterRemote = () => {
-  const [isActive, setIsActive] = useState<boolean>(false);
+const Header = () => {
   return (
-    <div>
-      <button onClick={() => setIsActive(true)}>
+    <div
+      className=" z-30 fixed w-[343px] h-10 rounded-[25px] bg-white top-[64px] px-[20px] py-[10px] flex justify-between"
+      style={{ boxShadow: "0px 0px 10px 0 rgba(26,26,26,0.1)" }}
+    >
+      <div className="flex items-center cursor-pointer">
+        <p className=" text-sm font-bold">서울특별시 마포구</p>
+        <svg
+          width={16}
+          height={16}
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className=" ml-1"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M4.47754 7.01758L7.88953 10.5126L11.4225 7.01758"
+            stroke="#1A1A1A"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+      <FilterRemote>
         <svg
           width={24}
           height={24}
@@ -59,11 +78,9 @@ const FilterRemote = () => {
             stroke-linejoin="round"
           />
         </svg>
-      </button>
-
-      {isActive && <FilterModal onClose={() => setIsActive(false)} />}
+      </FilterRemote>
     </div>
   );
 };
 
-export default FilterRemote;
+export default Header;
