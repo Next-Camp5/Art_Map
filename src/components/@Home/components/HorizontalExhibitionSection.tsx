@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import displayThumbnail from "@/public/images/displayThumbnail.png";
 
-const HorizontalExhibitionSection = () => {
+const HorizontalExhibitionItem = () => {
   return (
     <Link
       href="/exhibition/detail"
@@ -28,4 +28,4 @@ const HorizontalExhibitionSection = () => {
   );
 };
 
-export default HorizontalExhibitionSection;
+export default HorizontalExhibitionItem;

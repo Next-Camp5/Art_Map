@@ -8,12 +8,12 @@ import displayThumbnail from "@/public/images/displayThumbnail.png";
 import Link from "next/link";
 
 const ExhibitionSlide = (index: number) => (
-  <SwiperSlide key={index}>
-    <Link href="/exhibition/detail" className="flex flex-col gap-2.5">
+  <SwiperSlide>
+    <Link href="/exhibition/detail" className="flex flex-col gap-2.5 w-[200px]">
       {/* exhibition thumbnail */}
       <Image
         src={displayThumbnail}
-        alt={`전시 이미지 ${index + 1}`}
+        alt={`전시 이미지`}
         width={200}
         height={200}
       />
@@ -37,7 +37,13 @@ const VerticalExhibitionSection = () => {
   return (
     <>
       {/* exhibition container */}
-      <Swiper spaceBetween={10} slidesPerView={1.5} className="w-full">
+      <Swiper
+        slidesPerView={1.5}
+        slidesPerGroup={1}
+        spaceBetween={15}
+        width={320}
+        slidesOffsetAfter={-30}
+      >
         {[...Array(5)].map((_, index) => ExhibitionSlide(index))}
       </Swiper>
     </>

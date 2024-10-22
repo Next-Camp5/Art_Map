@@ -26,7 +26,7 @@ const EXHIBITION_DATA2 = {
 
 const ExhibitionGallery = () => {
   return (
-    <main className="columns-2 px-4 gap-2.5 mt-5 max-w-[375px]">
+    <main className="columns-2 px-4 gap-2.5 mt-5 max-w-[375px] pb-[100px]">
       <GalleryItem {...EXHIBITION_DATA1} />
       <GalleryItem {...EXHIBITION_DATA2} />
       <GalleryItem {...EXHIBITION_DATA2} />
