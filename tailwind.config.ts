@@ -24,12 +24,12 @@ const config: Config = {
         "gradient-point-2": "#AC7BFB",
         "gray-0": "#FAFAFA",
         "gray-1": "#F7F7F7",
-        "gray-2": "F0F0F0",
+        "gray-2": "#F0F0F0",
         "gray-3": "#BEBEBE",
         "gray-4": "#808080",
-        "gray-5": "444444",
-        "gray-6": "1A1A1A",
-        "gray-7": "7B7B7B",
+        "gray-5": "#444444",
+        "gray-6": "#1A1A1A",
+        "gray-7": "#7B7B7B",
       },
 
       fontSize: {

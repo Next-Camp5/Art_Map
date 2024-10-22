@@ -1,64 +1,53 @@
 "use client";
 
 import Button from "@/components/common/Botton";
-import { useRouter } from "next/navigation";
 import { ChangeEvent, useState, FormEvent } from "react";
 import ProfilePicture from "./ProfilePicture";
+import BackIcon from "@/components/Icon/BackIcon";
 
-const Profile = () => {
+const ProfileContainer = ({ nextPage, prevPage }: HeaderProps) => {
   const [profile, setProfile] = useState("");
   const [valid, setValid] = useState(true);
-  const [submitted, setSubmitted] = useState(false);
-  const router = useRouter();
-
-  const handleNavigation = () => {
-    router.push("term");
-  };
+  const [initialState, setInitialState] = useState(false);
 
   const handleValid = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setProfile(value);
     if (value === "") {
       setValid(true);
-      setSubmitted(false);
-    } else {
-      setValid(true);
+      setInitialState(false);
+      return;
     }
+
+    if (value !== "아트맵") {
+      setInitialState(true);
+      setValid(true);
+      return;
+    }
+
+    setValid(false);
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSubmitted(true);
-    const inputElement = e.currentTarget.querySelector("input");
-    if (inputElement && inputElement.value !== "아트맵") {
-      setValid(true);
-    } else {
-      setValid(false);
-    }
-  };
   return (
     <>
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="relative overflow-hidden bg-white w-[375px] h-[812px]">
-          <p className="text-[20px] mt-[104px] font-bold m-4 ">
-            프로필 정보를 입력하세요.
-          </p>
+          <div className="mt-[60px] m-4">
+            <BackIcon onClick={prevPage} />
+          </div>
+          <p className="text-lg font-bold m-4 ">프로필 정보를 입력하세요.</p>
           <ProfilePicture />
           <p className="mt-[50px] font-bold text-sm m-4">닉네임</p>
           <div
             className={`flex items-center justify-center border-b-2 ${
-              submitted && !valid
-                ? "border-red-500"
-                : submitted && valid
+              initialState && !valid
+                ? "border-warning"
+                : initialState && valid
                 ? "border-primary"
                 : "border-gray-3"
             } m-4`}
           >
-            <form
-              onSubmit={handleSubmit}
-              noValidate
-              className="flex items-center justify-center gap-2 w-[343px] pl-0 pr-0"
-            >
+            <div className="flex items-center justify-center gap-2 w-[343px] pl-0 pr-0">
               <input
                 type="text"
                 placeholder="닉네임을 입력해주세요."
@@ -66,23 +55,23 @@ const Profile = () => {
                 className="pb-2 w-[343px] focus:ring-0 focus:outline-none"
                 required
               />
-            </form>
+            </div>
           </div>
           <div className="h-[24px]">
-            {submitted && !valid && (
-              <p className="ml-4 text-sm text-red-500">
+            {initialState && !valid && (
+              <p className="ml-4 text-sm text-warning">
                 사용 중인 닉네임입니다.
               </p>
             )}
           </div>
-          <div className="flex items-center justify-center pt-[293px]">
+          <div className="flex items-center justify-center pt-[217px]">
             <Button
               size="XL"
-              color={`${submitted && valid ? "primary" : "gray-3"}`}
+              color={`${initialState && valid ? "primary" : "gray-3"}`}
               border={false}
               children={"다음"}
-              onClick={submitted && valid ? handleNavigation : undefined}
-              disabled={!submitted || !valid}
+              onClick={initialState && valid ? nextPage : undefined}
+              disabled={!initialState || !valid}
             />
           </div>
         </div>
@@ -91,4 +80,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfileContainer;

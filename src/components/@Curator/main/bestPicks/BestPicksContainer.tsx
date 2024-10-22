@@ -36,7 +36,7 @@ const BestPicksContainer = () => {
     <div className="mb-[50px]">
       <h2 className="text-lg font-bold mb-[20px]">지금 인기글</h2>
 
-      <Swiper slidesPerView={1.3}>
+      <Swiper slidesPerView={1.3} slidesOffsetAfter={78}>
         {bestPicks.map((bestPick) => (
           <SwiperSlide key={bestPick.id}>
             <BestPick bestPick={bestPick} />

@@ -7,7 +7,7 @@ import OtherPostsContainer from "./Other/OtherPostsContainer";
 
 const PostContainer = () => {
   return (
-    <div>
+    <div className="pb-[50px]">
       <Title />
       <div className=" pl-[16px] pr-[16px]">
         <CuratorProfile />

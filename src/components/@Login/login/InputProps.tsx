@@ -6,7 +6,7 @@ interface InputFieldProps {
   className?: string;
 }
 
-const InputField = ({
+const InputProps = ({
   type,
   placeholder,
   icon,
@@ -29,4 +29,4 @@ const InputField = ({
   );
 };
 
-export default InputField;
+export default InputProps;

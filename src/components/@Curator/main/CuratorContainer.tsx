@@ -5,7 +5,7 @@ import FilterRemote from "@/components/@Map/FilterRemote";
 
 const CuratorContainer = () => {
   return (
-    <div className=" w-full pl-[16px] pr-[16px]">
+    <div className=" w-full pl-[16px] pr-[16px] pb-[50px]">
       <BestPicksContainer />
       <CuratorsContainer />
       <LatestPostsContainer />
