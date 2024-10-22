@@ -11,8 +11,7 @@ const ProfilePicture = () => {
     }
   };
 
-  const handleClear = (e: React.MouseEvent<SVGElement>) => {
-    e.stopPropagation();
+  const handleClear = () => {
     setImagePreview(null);
   };
   return (
@@ -50,7 +49,7 @@ const ProfilePicture = () => {
           </svg>
         )}
         {/*플러스 버튼 아이콘*/}
-        <label className="absolute top-[50px] right-[136px] z-10">
+        <div className="absolute top-[50px] right-[136px] z-10">
           {imagePreview ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -78,38 +77,42 @@ const ProfilePicture = () => {
               />
             </svg>
           ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-            >
-              <path
-                d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
-                fill="black"
-              />
-              <path
-                d="M9.66602 5.166V14.166"
-                stroke="white"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-              <path
-                d="M14.166 9.666H5.16602"
-                stroke="white"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-            </svg>
+            <>
+              <label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handleImageUpload}
+                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                >
+                  <path
+                    d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                    fill="black"
+                  />
+                  <path
+                    d="M9.66602 5.166V14.166"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M14.166 9.666H5.16602"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </label>
+            </>
           )}
-          <input
-            type="file"
-            accept="image/*"
-            className="hidden"
-            onChange={handleImageUpload}
-          />
-        </label>
+        </div>
       </div>
     </>
   );
