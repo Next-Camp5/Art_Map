@@ -14,7 +14,7 @@ const createBgOrBorderMap = (
   }, {} as BgOrBorderMap);
 };
 
-const colorArray = ["gray-3", "point", "primary", "white"] as const;
+const colorArray = ["gray-3", "point", "primary", "white", "none"] as const;
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size: "XL" | "L" | "M" | "SM" | "NONE";
