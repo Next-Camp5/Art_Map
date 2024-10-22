@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Exhibition = () => {
   return (
-    <div>
+    <Link href={"/curator/post/1"}>
       <Image
         src="/prototypeImg.jpg"
         height={0}
@@ -15,7 +16,7 @@ const Exhibition = () => {
         움직임을 만드는 움직임
       </p>
       <p className="text-xs text-left text-primary ">2021.10.03 ~ 2021.12.02</p>
-    </div>
+    </Link>
   );
 };
 
