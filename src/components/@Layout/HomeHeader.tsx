@@ -11,10 +11,15 @@ import Button from "../common/Botton";
 const HomeHeader = () => {
   const [selected, setSelected] = useState(false);
   const pathname = usePathname();
-  console.log(pathname);
 
   return (
-    <header className="flex justify-between items-center px-4 h-[60px]">
+    <header
+      className={`flex justify-between items-center px-4 h-[60px] ${
+        pathname === "/exhibition"
+          ? "bg-white border-b border-gray-2"
+          : "bg-transparent"
+      }`}
+    >
       <div className="flex gap-2 w-[236px]">
         <Link
           href="/"
