@@ -3,7 +3,9 @@
 import Button from "@/components/common/Botton";
 import LineCheckBox from "@/components/common/checkBox/LineCheckBox";
 import CircleCheckBox from "@/components/common/checkBox/CircleCheckBox";
-import { useEffect, useState } from "react";
+import Modal from "@/components/common/modal/Modal";
+
+import { useState } from "react";
 
 interface ClickState {
   terms: boolean;
@@ -18,18 +20,13 @@ const Terms = ({ nextPage }: { nextPage: () => void }) => {
     privacy: false,
     marketing: false,
   });
-
-  useEffect(() => {
-    const allSelected = Object.values(click).every(Boolean);
-    setAllClick(allSelected);
-  }, [click]);
-
   const handleClick = (key: keyof ClickState) => {
     setClick((prevState) => {
       const newState = {
         ...prevState,
         [key]: !prevState[key],
       };
+      setAllClick(newState.terms && newState.privacy && newState.marketing);
       return newState;
     });
   };

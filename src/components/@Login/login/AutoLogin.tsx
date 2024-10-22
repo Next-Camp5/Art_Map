@@ -13,7 +13,9 @@ const AutoLogin = () => {
 
   return (
     <div className="flex items-center">
-      <SquareCheckBox onClick={handleCheck} />
+      <div className="pt-[4px]">
+        <SquareCheckBox onClick={handleCheck} />
+      </div>
       <span className="pl-[10px] text-gray-4">자동로그인</span>
     </div>
   );

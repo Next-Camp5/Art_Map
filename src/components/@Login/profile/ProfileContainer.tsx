@@ -8,29 +8,26 @@ import BackIcon from "@/components/Icon/BackIcon";
 const ProfileContainer = ({ nextPage, prevPage }: HeaderProps) => {
   const [profile, setProfile] = useState("");
   const [valid, setValid] = useState(true);
-  const [submitted, setSubmitted] = useState(false);
+  const [initialState, setInitialState] = useState(false);
 
   const handleValid = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setProfile(value);
     if (value === "") {
       setValid(true);
-      setSubmitted(false);
-    } else {
-      setValid(true);
+      setInitialState(false);
+      return;
     }
+
+    if (value !== "아트맵") {
+      setInitialState(true);
+      setValid(true);
+      return;
+    }
+
+    setValid(false);
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSubmitted(true);
-    const inputElement = e.currentTarget.querySelector("input");
-    if (inputElement && inputElement.value !== "아트맵") {
-      setValid(true);
-    } else {
-      setValid(false);
-    }
-  };
   return (
     <>
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -43,18 +40,14 @@ const ProfileContainer = ({ nextPage, prevPage }: HeaderProps) => {
           <p className="mt-[50px] font-bold text-sm m-4">닉네임</p>
           <div
             className={`flex items-center justify-center border-b-2 ${
-              submitted && !valid
+              initialState && !valid
                 ? "border-warning"
-                : submitted && valid
+                : initialState && valid
                 ? "border-primary"
                 : "border-gray-3"
             } m-4`}
           >
-            <form
-              onSubmit={handleSubmit}
-              noValidate
-              className="flex items-center justify-center gap-2 w-[343px] pl-0 pr-0"
-            >
+            <div className="flex items-center justify-center gap-2 w-[343px] pl-0 pr-0">
               <input
                 type="text"
                 placeholder="닉네임을 입력해주세요."
@@ -62,10 +55,10 @@ const ProfileContainer = ({ nextPage, prevPage }: HeaderProps) => {
                 className="pb-2 w-[343px] focus:ring-0 focus:outline-none"
                 required
               />
-            </form>
+            </div>
           </div>
           <div className="h-[24px]">
-            {submitted && !valid && (
+            {initialState && !valid && (
               <p className="ml-4 text-sm text-warning">
                 사용 중인 닉네임입니다.
               </p>
@@ -74,11 +67,11 @@ const ProfileContainer = ({ nextPage, prevPage }: HeaderProps) => {
           <div className="flex items-center justify-center pt-[217px]">
             <Button
               size="XL"
-              color={`${submitted && valid ? "primary" : "gray-3"}`}
+              color={`${initialState && valid ? "primary" : "gray-3"}`}
               border={false}
               children={"다음"}
-              onClick={submitted && valid ? nextPage : undefined}
-              disabled={!submitted || !valid}
+              onClick={initialState && valid ? nextPage : undefined}
+              disabled={!initialState || !valid}
             />
           </div>
         </div>

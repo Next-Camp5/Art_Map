@@ -1,7 +1,6 @@
 "use client";
 
 import Button from "@/components/common/Botton";
-import { useRouter } from "next/navigation";
 import { ChangeEvent, useState, FormEvent } from "react";
 
 interface VeriFieldProps {
@@ -19,29 +18,21 @@ const EmailInputField = ({
 }: VeriFieldProps) => {
   const [email, setEmail] = useState("");
   const [valid, setValid] = useState(true);
-  const [submitted, setSubmitted] = useState(false);
+  const [initialState, setInitialState] = useState(false);
 
   const handleValid = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setEmail(value);
-    setSubmitted(false);
-
     if (value === "") {
-      setValid(true);
-      return;
+      setInitialState(false);
     }
-
     if (e.target.validity.valid) {
       setValid(true);
+      setInitialState(true);
       return;
     }
 
     setValid(false);
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSubmitted(true);
   };
 
   return (
@@ -50,16 +41,12 @@ const EmailInputField = ({
         className={`flex items-center justify-center border-b-2 ${
           !valid
             ? "border-warning"
-            : submitted && valid
+            : initialState && valid
             ? "border-primary"
             : "border-gray-3"
         } m-4`}
       >
-        <form
-          onSubmit={handleSubmit}
-          noValidate
-          className="flex items-center justify-center gap-2 w-[343px] pl-0 pr-0"
-        >
+        <div className="flex items-center justify-center gap-2 w-[343px] pl-0 pr-0">
           <input
             type={type}
             placeholder={placeholder}
@@ -68,7 +55,7 @@ const EmailInputField = ({
             className="pb-2 w-[343px] focus:ring-0 focus:outline-none"
             required
           />
-        </form>
+        </div>
       </div>
       <div className="h-[24px]">
         {!valid && (
@@ -81,11 +68,11 @@ const EmailInputField = ({
       <div className="flex items-center justify-center pt-[337px]">
         <Button
           size="XL"
-          color={`${submitted && valid ? "primary" : "gray-3"}`}
+          color={`${initialState && valid ? "primary" : "gray-3"}`}
           border={false}
           children={"이메일 인증"}
-          onClick={submitted && valid ? nextPage : undefined}
-          disabled={!submitted || !valid}
+          onClick={initialState && valid ? nextPage : undefined}
+          disabled={!initialState && !valid}
         />
       </div>
     </>
