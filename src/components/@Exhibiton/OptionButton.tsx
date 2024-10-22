@@ -9,8 +9,8 @@ const OptionButton = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <Button
-      size="SM"
-      color="gray-3"
+      size="NONE"
+      color="white"
       border={false}
       aria-label="옵션"
       className="flex items-center gap-1 w-6 h-6"

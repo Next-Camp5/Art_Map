@@ -43,24 +43,11 @@ const FilterSetting = ({ onClose }: { onClose: () => void }) => {
     setTl(tl);
   }, []);
 
-  // const handleKeyDown = useCallback((event: KeyboardEvent) => {
-  //   if (event.key === "Escape") {
-  //     onClickCloseButton();
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   document.addEventListener("keydown", handleKeyDown);
-  //   return () => {
-  //     document.removeEventListener("keydown", handleKeyDown);
-  //   };
-  // }, [handleKeyDown]);
-
   return (
     <Modal onClose={onClickCloseButton} isClosing={isClosing}>
       <div
         ref={container}
-        className="fixed bottom-0 flex flex-col rounded-t-[20px] bg-white"
+        className="fixed bottom-0 right-[470px] flex flex-col rounded-t-[20px] bg-white"
         role="dialog"
         aria-labelledby="필터 설정"
         aria-describedby="필터 설정 설명"
