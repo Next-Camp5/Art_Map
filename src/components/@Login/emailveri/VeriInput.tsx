@@ -8,17 +8,18 @@ interface VeriFieldProps {
   type: "email" | "password";
   placeholder: string;
   pattern?: string;
+  nextPage: () => void;
 }
 
-const EmailInputField = ({ type, placeholder, pattern }: VeriFieldProps) => {
+const EmailInputField = ({
+  type,
+  placeholder,
+  pattern,
+  nextPage,
+}: VeriFieldProps) => {
   const [email, setEmail] = useState("");
   const [valid, setValid] = useState(true);
   const [submitted, setSubmitted] = useState(false);
-  const router = useRouter();
-
-  const handleNavigation = () => {
-    router.push("pwveri");
-  };
 
   const handleValid = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -42,8 +43,8 @@ const EmailInputField = ({ type, placeholder, pattern }: VeriFieldProps) => {
     <>
       <div
         className={`flex items-center justify-center border-b-2 ${
-          submitted && !valid
-            ? "border-red-500"
+          !valid
+            ? "border-warning"
             : submitted && valid
             ? "border-primary"
             : "border-gray-3"
@@ -65,19 +66,20 @@ const EmailInputField = ({ type, placeholder, pattern }: VeriFieldProps) => {
         </form>
       </div>
       <div className="h-[24px]">
-        {submitted && !valid && (
-          <p className="ml-4 text-sm text-red-500">
+        {!valid && (
+          <p className="ml-4 text-sm text-warning">
             이메일 주소가 정확하지 않습니다.
           </p>
         )}
       </div>
-      <div className="flex items-center justify-center pt-[413px]">
+      {/* 임의로 337px로 바꿈 */}
+      <div className="flex items-center justify-center pt-[337px]">
         <Button
           size="XL"
           color={`${submitted && valid ? "primary" : "gray-3"}`}
           border={false}
           children={"이메일 인증"}
-          onClick={submitted && valid ? handleNavigation : undefined}
+          onClick={submitted && valid ? nextPage : undefined}
           disabled={!submitted || !valid}
         />
       </div>

@@ -1,4 +1,4 @@
-import InputField from "./InputField";
+import InputProps from "./InputProps";
 
 const EmailIcon = (
   <svg
@@ -60,11 +60,11 @@ const PasswordIcon = (
   </svg>
 );
 
-const LoginPage = () => {
+const InputField = () => {
   return (
     <>
       {/* Email */}
-      <InputField
+      <InputProps
         type="email"
         placeholder="이메일"
         icon={EmailIcon}
@@ -73,7 +73,7 @@ const LoginPage = () => {
       />
 
       {/* Password */}
-      <InputField
+      <InputProps
         type="password"
         placeholder="비밀번호"
         icon={PasswordIcon}
@@ -83,4 +83,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default InputField;

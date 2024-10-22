@@ -1,19 +1,13 @@
 "use client";
 
 import Button from "@/components/common/Botton";
-import { useRouter } from "next/navigation";
 import { ChangeEvent, useState, FormEvent } from "react";
 import ProfilePicture from "./ProfilePicture";
 
-const Profile = () => {
+const ProfileContainer = ({ nextPage }: { nextPage: () => void }) => {
   const [profile, setProfile] = useState("");
   const [valid, setValid] = useState(true);
   const [submitted, setSubmitted] = useState(false);
-  const router = useRouter();
-
-  const handleNavigation = () => {
-    router.push("term");
-  };
 
   const handleValid = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -40,7 +34,7 @@ const Profile = () => {
     <>
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="relative overflow-hidden bg-white w-[375px] h-[812px]">
-          <p className="text-[20px] mt-[104px] font-bold m-4 ">
+          <p className="text-lg mt-[104px] font-bold m-4 ">
             프로필 정보를 입력하세요.
           </p>
           <ProfilePicture />
@@ -48,7 +42,7 @@ const Profile = () => {
           <div
             className={`flex items-center justify-center border-b-2 ${
               submitted && !valid
-                ? "border-red-500"
+                ? "border-warning"
                 : submitted && valid
                 ? "border-primary"
                 : "border-gray-3"
@@ -70,18 +64,18 @@ const Profile = () => {
           </div>
           <div className="h-[24px]">
             {submitted && !valid && (
-              <p className="ml-4 text-sm text-red-500">
+              <p className="ml-4 text-sm text-warning">
                 사용 중인 닉네임입니다.
               </p>
             )}
           </div>
-          <div className="flex items-center justify-center pt-[293px]">
+          <div className="flex items-center justify-center pt-[217px]">
             <Button
               size="XL"
               color={`${submitted && valid ? "primary" : "gray-3"}`}
               border={false}
               children={"다음"}
-              onClick={submitted && valid ? handleNavigation : undefined}
+              onClick={submitted && valid ? nextPage : undefined}
               disabled={!submitted || !valid}
             />
           </div>
@@ -91,4 +85,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfileContainer;

@@ -1,15 +1,15 @@
 "use client";
 
 import Button from "@/components/common/Botton";
-import { useRouter } from "next/navigation";
 import { ChangeEvent, useState, FormEvent } from "react";
 
 interface VeriFieldProps {
   type: "email" | "password";
   pattern?: string;
+  nextPage: () => void;
 }
 
-const PWInputField = ({ type, pattern }: VeriFieldProps) => {
+const PWInputField = ({ type, pattern, nextPage }: VeriFieldProps) => {
   const [password, setPassword] = useState("");
   const [valid, setValid] = useState(true);
   const [submitted, setSubmitted] = useState(false);
@@ -18,22 +18,14 @@ const PWInputField = ({ type, pattern }: VeriFieldProps) => {
   const [revalid, setRevalid] = useState(true);
   const [resubmitted, setResubmitted] = useState(false);
 
-  const router = useRouter();
-
-  const handleNavigation = () => {
-    router.push("profile");
-  };
-
   const handleValid = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setPassword(value);
-    if (value === "") {
-      setValid(true);
-      setSubmitted(false);
-    } else if (e.target.checkValidity()) {
-      setValid(true);
-    } else {
+    if (value === "" || !e.target.validity.valid) {
       setValid(false);
+      setSubmitted(false);
+    } else {
+      setValid(true);
     }
   };
 
@@ -74,7 +66,7 @@ const PWInputField = ({ type, pattern }: VeriFieldProps) => {
       <p className="mt-[60px] m-4 font-bold text-sm">비밀번호</p>
       <div
         className={`flex items-center justify-center border-b-2 ${
-          submitted && !valid
+          !valid
             ? "border-red-500"
             : submitted && valid
             ? "border-primary"
@@ -97,7 +89,7 @@ const PWInputField = ({ type, pattern }: VeriFieldProps) => {
         </form>
       </div>
       <div className="h-[24px]">
-        {submitted && !valid && (
+        {!valid && (
           <p className="ml-4 text-sm text-red-500">
             비밀번호 형식이 정확하지 않습니다.
           </p>
@@ -106,7 +98,7 @@ const PWInputField = ({ type, pattern }: VeriFieldProps) => {
       <p className="m-4 mt-[16px] font-bold text-sm">비밀번호 확인</p>
       <div
         className={`flex items-center justify-center border-b-2 ${
-          submitted && !valid && resubmitted && !revalid
+          resubmitted && !revalid
             ? "border-red-500"
             : submitted && valid && resubmitted && revalid
             ? "border-primary"
@@ -125,6 +117,7 @@ const PWInputField = ({ type, pattern }: VeriFieldProps) => {
             onChange={handleRecheck}
             className="pb-2 w-[343px] focus:ring-0 focus:outline-none"
             required
+            disabled={submitted ? false : true}
           />
         </form>
       </div>
@@ -135,7 +128,8 @@ const PWInputField = ({ type, pattern }: VeriFieldProps) => {
           </p>
         )}
       </div>
-      <div className="flex items-center justify-center pt-[309px]">
+      {/* 임의로 213 지정 */}
+      <div className="flex items-center justify-center pt-[213px]">
         <Button
           size="XL"
           color={`${
@@ -144,9 +138,7 @@ const PWInputField = ({ type, pattern }: VeriFieldProps) => {
           border={false}
           children={"다음"}
           onClick={
-            submitted && valid && resubmitted && revalid
-              ? handleNavigation
-              : undefined
+            submitted && valid && resubmitted && revalid ? nextPage : undefined
           }
           disabled={!submitted || !valid || !resubmitted || !revalid}
         />

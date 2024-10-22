@@ -5,12 +5,7 @@ import Button from "@/components/common/Botton";
 import SelectionButton from "./SelectionButton"; // Import the SelectionButton
 import { useRouter } from "next/navigation";
 
-const SignUp = () => {
-  const router = useRouter();
-
-  const handleNavigation = () => {
-    router.push("signup/emailveri"); // Navigates to the signup page
-  };
+const SignUp = ({ nextPage }: { nextPage: () => void }) => {
   const [click, setClick] = useState("");
   const [next, setNext] = useState(false);
 
@@ -288,13 +283,13 @@ const SignUp = () => {
         title="전시관 회원"
         description="작품 및 전시 포트폴리오를 등록하세요."
       />
-      <div className="flex items-center justify-center mt-[150px]">
+      <div className="flex items-center justify-center mt-[87px]">
         <Button
           size="XL"
           color={next === true ? "primary" : "gray-3"}
           border={false}
           children={"다음"}
-          onClick={next === true ? handleNavigation : undefined}
+          onClick={next === true ? nextPage : undefined}
           disabled={!next}
         />
       </div>
