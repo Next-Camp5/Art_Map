@@ -1,9 +1,10 @@
 const ART_GALLERIES = [
   {
     ART_GALLERY: "서울시립미술관",
-    posX: 126.9778,
-    posY: 37.5647,
+    POS_X: 126.9778,
+    POS_Y: 37.5647,
     DISTRICT: "중구",
+    STATE: "OPEN",
     EXHIBITIONS: [
       {
         TITLE: "빛과 예술의 조화",
@@ -23,9 +24,10 @@ const ART_GALLERIES = [
   },
   {
     ART_GALLERY: "국립현대미술관 서울관",
-    posX: 126.9804,
-    posY: 37.5793,
+    POS_X: 126.9804,
+    POS_Y: 37.5793,
     DISTRICT: "종로구",
+    STATE: "CLOSED",
     EXHIBITIONS: [
       {
         TITLE: "한국 현대미술의 재해석",
@@ -38,9 +40,10 @@ const ART_GALLERIES = [
   },
   {
     ART_GALLERY: "금호미술관",
-    posX: 126.9811,
-    posY: 37.5783,
+    POS_X: 126.9811,
+    POS_Y: 37.5783,
     DISTRICT: "종로구",
+    STATE: "OPEN",
     EXHIBITIONS: [
       {
         TITLE: "예술과 사람의 연결",
@@ -53,9 +56,10 @@ const ART_GALLERIES = [
   },
   {
     ART_GALLERY: "성곡미술관",
-    posX: 126.9736,
-    posY: 37.5732,
+    POS_X: 126.9736,
+    POS_Y: 37.5732,
     DISTRICT: "종로구",
+    STATE: "OPEN",
     EXHIBITIONS: [
       {
         TITLE: "도시의 재구성",
@@ -68,9 +72,10 @@ const ART_GALLERIES = [
   },
   {
     ART_GALLERY: "서울대학교미술관",
-    posX: 126.9481,
-    posY: 37.4604,
+    POS_X: 126.9481,
+    POS_Y: 37.4604,
     DISTRICT: "관악구",
+    STATE: "OPEN",
     EXHIBITIONS: [
       {
         TITLE: "미래와 예술",
@@ -90,9 +95,10 @@ const ART_GALLERIES = [
   },
   {
     ART_GALLERY: "아라리오뮤지엄 인 스페이스",
-    posX: 126.9845,
-    posY: 37.5822,
+    POS_X: 126.9845,
+    POS_Y: 37.5822,
     DISTRICT: "종로구",
+    STATE: "OPEN",
     EXHIBITIONS: [
       {
         TITLE: "미디어아트의 흐름",
@@ -112,9 +118,10 @@ const ART_GALLERIES = [
   },
   {
     ART_GALLERY: "사비나미술관",
-    posX: 126.9769,
-    posY: 37.5665,
+    POS_X: 126.9769,
+    POS_Y: 37.5665,
     DISTRICT: "은평구",
+    STATE: "CLOSED",
     EXHIBITIONS: [
       {
         TITLE: "색채와 공간의 이야기",
@@ -134,9 +141,10 @@ const ART_GALLERIES = [
   },
   {
     ART_GALLERY: "서울미술관",
-    posX: 126.9722,
-    posY: 37.5784,
+    POS_X: 126.9722,
+    POS_Y: 37.5784,
     DISTRICT: "종로구",
+    STATE: "OPEN",
     EXHIBITIONS: [
       {
         TITLE: "한국미술의 색채",
@@ -149,9 +157,10 @@ const ART_GALLERIES = [
   },
   {
     ART_GALLERY: "대림미술관",
-    posX: 126.9815,
-    posY: 37.5792,
+    POS_X: 126.9815,
+    POS_Y: 37.5792,
     DISTRICT: "종로구",
+    STATE: "OPEN",
     EXHIBITIONS: [
       {
         TITLE: "사진과 미술의 경계",
@@ -164,9 +173,10 @@ const ART_GALLERIES = [
   },
   {
     ART_GALLERY: "이화여자대학교 박물관",
-    posX: 126.9447,
-    posY: 37.5634,
+    POS_X: 126.9447,
+    POS_Y: 37.5634,
     DISTRICT: "서대문구",
+    STATE: "OPEN",
     EXHIBITIONS: [
       {
         TITLE: "여성과 예술",
@@ -179,9 +189,10 @@ const ART_GALLERIES = [
   },
   {
     ART_GALLERY: "성신여자대학교 운정그린캠퍼스미술관",
-    posX: 127.0229,
-    posY: 37.5946,
+    POS_X: 127.0229,
+    POS_Y: 37.5946,
     DISTRICT: "성북구",
+    STATE: "OPEN",
     EXHIBITIONS: [
       {
         TITLE: "현대미술의 패러다임",
@@ -194,9 +205,10 @@ const ART_GALLERIES = [
   },
   {
     ART_GALLERY: "홍익대학교 현대미술관",
-    posX: 126.922,
-    posY: 37.5515,
+    POS_X: 126.922,
+    POS_Y: 37.5515,
     DISTRICT: "마포구",
+    STATE: "OPEN",
     EXHIBITIONS: [
       {
         TITLE: "디지털과 예술의 만남",
@@ -209,9 +221,10 @@ const ART_GALLERIES = [
   },
   {
     ART_GALLERY: "아트센터 나비",
-    posX: 126.9698,
-    posY: 37.5662,
+    POS_X: 126.9698,
+    POS_Y: 37.5662,
     DISTRICT: "중구",
+    STATE: "OPEN",
     EXHIBITIONS: [
       {
         TITLE: "인터랙티브 미디어 아트",
@@ -231,9 +244,10 @@ const ART_GALLERIES = [
   },
   {
     ART_GALLERY: "일민미술관",
-    posX: 126.9773,
-    posY: 37.57,
+    POS_X: 126.9773,
+    POS_Y: 37.57,
     DISTRICT: "종로구",
+    STATE: "OPEN",
     EXHIBITIONS: [
       {
         TITLE: "예술과 정치",
@@ -246,9 +260,10 @@ const ART_GALLERIES = [
   },
   {
     ART_GALLERY: "OCI 미술관",
-    posX: 126.9739,
-    posY: 37.573,
+    POS_X: 126.9739,
+    POS_Y: 37.573,
     DISTRICT: "종로구",
+    STATE: "OPEN",
     EXHIBITIONS: [
       {
         TITLE: "한국현대미술의 흐름",

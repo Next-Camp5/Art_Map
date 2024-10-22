@@ -26,8 +26,8 @@ const GuCluster = () => {
         <CustomOverlayMap
           key={guExhibition.name}
           position={{
-            lat: GU_INFO[guExhibition.name].posY,
-            lng: GU_INFO[guExhibition.name].posX,
+            lat: GU_INFO[guExhibition.name].POS_Y,
+            lng: GU_INFO[guExhibition.name].POS_X,
           }}
         >
           <GuMarker
