@@ -24,14 +24,19 @@ const EmailInputField = ({
   const handleValid = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setEmail(value);
+    setSubmitted(false);
+
     if (value === "") {
       setValid(true);
-      setSubmitted(false);
-    } else if (e.target.validity.valid) {
-      setValid(true);
-    } else {
-      setValid(false);
+      return;
     }
+
+    if (e.target.validity.valid) {
+      setValid(true);
+      return;
+    }
+
+    setValid(false);
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

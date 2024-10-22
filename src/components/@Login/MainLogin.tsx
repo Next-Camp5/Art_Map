@@ -22,10 +22,13 @@ const MainLogin = () => {
   const nextPage = () => {
     setId((prevId) => Math.min(prevId + 1, components.length - 1));
   };
+  const prevPage = () => {
+    setId((prevId) => Math.max(prevId - 1, 0));
+  };
   const CurrentComponents = components[id];
   return (
     <>
-      <CurrentComponents nextPage={nextPage} />
+      <CurrentComponents nextPage={nextPage} {...(id > 0 && { prevPage })} />
     </>
   );
 };

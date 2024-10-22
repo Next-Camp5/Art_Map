@@ -21,12 +21,9 @@ const PWInputField = ({ type, pattern, nextPage }: VeriFieldProps) => {
   const handleValid = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setPassword(value);
-    if (value === "" || !e.target.validity.valid) {
-      setValid(false);
-      setSubmitted(false);
-    } else {
-      setValid(true);
-    }
+    setSubmitted(false);
+
+    setValid(value !== "" && e.target.validity.valid);
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -43,11 +40,9 @@ const PWInputField = ({ type, pattern, nextPage }: VeriFieldProps) => {
   const handleRecheck = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setRecheck(value);
-    if (password === value) {
-      setRevalid(true);
-    } else {
-      setRevalid(false);
-    }
+    setResubmitted(false); // Reset resubmitted when input changes
+
+    setRevalid(password === value);
   };
 
   const handleResubmit = (e: FormEvent<HTMLFormElement>) => {

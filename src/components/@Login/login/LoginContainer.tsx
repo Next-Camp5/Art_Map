@@ -5,14 +5,7 @@ import SNSLoginButton from "@/components/common/snsButton/SNSLoginButton";
 import InputField from "./InputField";
 import AutoLogin from "./AutoLogin";
 
-import { useRouter } from "next/navigation";
-
 const LoginContainer = ({ nextPage }: { nextPage: () => void }) => {
-  const router = useRouter();
-
-  const handleNavigation = () => {
-    router.push("login/signup"); // Navigates to the signup page
-  };
   return (
     <>
       <div className="flex items-center justify-center min-h-screen bg-gray-100">

@@ -1,13 +1,15 @@
+import BackIcon from "@/components/Icon/BackIcon";
 import PWVeriInput from "./PWVeriInput";
 
-const PWVeriContainer = ({ nextPage }: { nextPage: () => void }) => {
+const PWVeriContainer = ({ nextPage, prevPage }: HeaderProps) => {
   return (
     <>
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="relative overflow-hidden bg-white w-[375px] h-[812px]">
-          <p className="text-lg mt-[104px] font-bold m-4">
-            비밀번호를 입력해주세요.
-          </p>
+          <div className="mt-[60px] m-4">
+            <BackIcon onClick={prevPage} />
+          </div>
+          <p className="text-lg font-bold m-4">비밀번호를 입력해주세요.</p>
           <PWVeriInput
             type="password"
             pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"

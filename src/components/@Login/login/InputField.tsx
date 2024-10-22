@@ -68,7 +68,7 @@ const InputField = () => {
         type="email"
         placeholder="이메일"
         icon={EmailIcon}
-        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\.[a-zA-Z]{2,})?$"
         className="flex items-center justify-center border-b-2 border-primary m-4 mt-[100px]"
       />
 

@@ -3,8 +3,9 @@
 import Button from "@/components/common/Botton";
 import { ChangeEvent, useState, FormEvent } from "react";
 import ProfilePicture from "./ProfilePicture";
+import BackIcon from "@/components/Icon/BackIcon";
 
-const ProfileContainer = ({ nextPage }: { nextPage: () => void }) => {
+const ProfileContainer = ({ nextPage, prevPage }: HeaderProps) => {
   const [profile, setProfile] = useState("");
   const [valid, setValid] = useState(true);
   const [submitted, setSubmitted] = useState(false);
@@ -34,9 +35,10 @@ const ProfileContainer = ({ nextPage }: { nextPage: () => void }) => {
     <>
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="relative overflow-hidden bg-white w-[375px] h-[812px]">
-          <p className="text-lg mt-[104px] font-bold m-4 ">
-            프로필 정보를 입력하세요.
-          </p>
+          <div className="mt-[60px] m-4">
+            <BackIcon onClick={prevPage} />
+          </div>
+          <p className="text-lg font-bold m-4 ">프로필 정보를 입력하세요.</p>
           <ProfilePicture />
           <p className="mt-[50px] font-bold text-sm m-4">닉네임</p>
           <div
