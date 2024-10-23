@@ -1,31 +1,35 @@
-import FilterRemote from "../FilterRemote";
+import { memo } from "react";
+import FilterRemote from "../modal/FilterRemote";
+import GuSearchRemote from "../modal/GuSearchRemote";
 
 const Header = () => {
   return (
     <div
-      className=" z-30 fixed w-[343px] h-10 rounded-[25px] bg-white top-[64px] px-[20px] py-[10px] flex justify-between"
+      className=" z-30 fixed w-[343px] h-10 rounded-[25px] bg-white top-[26px] px-[20px] py-[10px] flex justify-between"
       style={{ boxShadow: "0px 0px 10px 0 rgba(26,26,26,0.1)" }}
     >
-      <div className="flex items-center cursor-pointer">
-        <p className=" text-sm font-bold">서울특별시 마포구</p>
-        <svg
-          width={16}
-          height={16}
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className=" ml-1"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M4.47754 7.01758L7.88953 10.5126L11.4225 7.01758"
-            stroke="#1A1A1A"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </div>
+      <GuSearchRemote>
+        <div className="flex items-center cursor-pointer">
+          <p className=" text-sm font-bold">서울특별시 마포구</p>
+          <svg
+            width={16}
+            height={16}
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className=" ml-1"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M4.47754 7.01758L7.88953 10.5126L11.4225 7.01758"
+              stroke="#1A1A1A"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      </GuSearchRemote>
       <FilterRemote>
         <svg
           width={24}
@@ -83,4 +87,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);
