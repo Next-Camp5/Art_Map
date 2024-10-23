@@ -1,7 +1,6 @@
 import BestPicksContainer from "./bestPicks/BestPicksContainer";
 import CuratorsContainer from "./curators/CuratorsContainer";
 import LatestPostsContainer from "./latestPost/LatestPostsContainer";
-import FilterRemote from "@/components/@Map/FilterRemote";
 
 const CuratorContainer = () => {
   return (
@@ -9,7 +8,6 @@ const CuratorContainer = () => {
       <BestPicksContainer />
       <CuratorsContainer />
       <LatestPostsContainer />
-      <FilterRemote />
     </div>
   );
 };
