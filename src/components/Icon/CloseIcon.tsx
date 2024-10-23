@@ -1,7 +1,7 @@
-import React from "react";
-import BaseIcon from "./BaseIcon";
-import { StrokeIconProps } from "./types/icon";
-import themeConfig from "@/configs/theme";
+import React from 'react';
+import BaseIcon from './BaseIcon';
+import { StrokeIconProps } from './types/icon';
+import themeConfig from '@/configs/theme';
 
 const CloseIcon = ({
   stroke = themeConfig.DEFAULT_COLOR,

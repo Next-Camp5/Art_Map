@@ -1,4 +1,4 @@
-import ExhibitionListContainer from "@/containers/ExhibitionListContainer";
+import ExhibitionListContainer from '@/containers/ExhibitionListContainer';
 
 const ExhibitionPage = () => {
   return (

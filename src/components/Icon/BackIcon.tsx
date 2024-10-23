@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import BaseIcon from "./BaseIcon";
+import BaseIcon from './BaseIcon';
 
-import { StrokeIconProps } from "./types/icon";
-import themeConfig from "@/configs/theme";
+import { StrokeIconProps } from './types/icon';
+import themeConfig from '@/configs/theme';
 
 const BackIcon = ({
   stroke = themeConfig.DEFAULT_COLOR,

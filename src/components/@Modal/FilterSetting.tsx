@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import gsap from "gsap";
-import Image from "next/image";
-import { useGSAP } from "@gsap/react";
-import { useRef, useState } from "react";
+import gsap from 'gsap';
+import Image from 'next/image';
+import { useGSAP } from '@gsap/react';
+import { useRef, useState } from 'react';
 
-import Modal from "../common/modal/Modal";
-import DropdownButton from "./components/DropdownButton";
-import ToggleButton from "../common/toggleButton/ToggleButton";
+import Modal from '../common/modal/Modal';
+import DropdownButton from './components/DropdownButton';
+import ToggleButton from '../common/toggleButton/ToggleButton';
 
-import ReturnIcon from "@/public/svgs/Return.svg";
+import ReturnIcon from '/public/svgs/Return.svg';
 
 const FilterSetting = ({ onClose }: { onClose: () => void }) => {
   const [isClosing, setIsClosing] = useState<boolean>(false);
@@ -30,12 +30,12 @@ const FilterSetting = ({ onClose }: { onClose: () => void }) => {
 
     tl.fromTo(
       container.current,
-      { y: "100%", opacity: 0 },
+      { y: '100%', opacity: 0 },
       {
-        y: "0%",
+        y: '0%',
         opacity: 1,
         duration: 0.5,
-        ease: "power2.out",
+        ease: 'power2.out',
         onReverseComplete: handleClose,
       }
     );
@@ -47,7 +47,7 @@ const FilterSetting = ({ onClose }: { onClose: () => void }) => {
     <Modal onClose={onClickCloseButton} isClosing={isClosing}>
       <div
         ref={container}
-        className="fixed bottom-0 right-[470px] flex flex-col rounded-t-[20px] bg-white"
+        className="fixed bottom-0 flex flex-col rounded-t-[20px] bg-white"
         role="dialog"
         aria-labelledby="필터 설정"
         aria-describedby="필터 설정 설명"
@@ -60,8 +60,8 @@ const FilterSetting = ({ onClose }: { onClose: () => void }) => {
           <span className="text-md font-medium text-gray-6">전시중</span>
           <ToggleButton />
         </div>
-        <DropdownButton label="지역" items={["서울", "부산", "대구"]} />
-        <DropdownButton label="카테고리" items={["미술", "음악", "연극"]} />
+        <DropdownButton label="지역" items={['서울', '부산', '대구']} />
+        <DropdownButton label="카테고리" items={['미술', '음악', '연극']} />
         <div className="flex gap-2.5 px-4 py-1.5">
           <button
             className="flex flex-col items-center justify-center w-[50px] h-[50px]"

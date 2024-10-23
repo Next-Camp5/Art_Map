@@ -1,4 +1,4 @@
-import MainLogin from "@/components/@Login/MainLogin";
+import MainLogin from './_source/components/MainLogin';
 
 const Login = () => {
   return <MainLogin />;

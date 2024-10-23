@@ -1,9 +1,9 @@
-import Image from "next/image";
+import Image from 'next/image';
 
-import { MY_IMAGES } from "@/generated/path/images";
+import { MY_IMAGES } from '@/generated/path/images';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  social: "KAKAO" | "NAVER" | "APPLE" | "GOOGLE" | "FACEBOOK";
+  social: 'KAKAO' | 'NAVER' | 'APPLE' | 'GOOGLE' | 'FACEBOOK';
 }
 
 const SNSLoginButton = ({ social, ...props }: Props) => {

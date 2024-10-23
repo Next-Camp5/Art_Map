@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { createPortal } from "react-dom";
+import { createPortal } from 'react-dom';
 
 interface Props {
   children: React.ReactNode;
@@ -9,13 +9,13 @@ interface Props {
   onClose: () => void;
 }
 
-const Modal = ({ children, className = "", onClose, isClosing }: Props) => {
+const Modal = ({ children, className = '', onClose, isClosing }: Props) => {
   const handleClose = () => {
     onClose();
   };
 
   return createPortal(
-    <div className={`${className} mx-auto max-w-sm`}>
+    <div className={`${className} mx-auto max-w-[375px]`}>
       {!isClosing && (
         <div
           className="fixed inset-0 bg-black opacity-50 z-40 cursor-pointer"
@@ -23,7 +23,7 @@ const Modal = ({ children, className = "", onClose, isClosing }: Props) => {
         ></div>
       )}
       <div
-        className={` ${isClosing ? "pointer-events-none" : ""} relative z-50`}
+        className={` ${isClosing ? 'pointer-events-none' : ''} relative z-50`}
       >
         {children}
       </div>

@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import gsap from "gsap";
-import Image from "next/image";
-import { useGSAP } from "@gsap/react";
-import { useRef, useState } from "react";
+import gsap from 'gsap';
+import Image from 'next/image';
+import { useGSAP } from '@gsap/react';
+import { useRef, useState } from 'react';
 
-import ArrowUpIcon from "@/public/svgs/ArrowUp.svg";
-import ArrowDownIcon from "@/public/svgs/ArrowDown.svg";
+import ArrowUpIcon from '/public/svgs/ArrowUp.svg';
+import ArrowDownIcon from '/public/svgs/ArrowDown.svg';
 
 interface DropdownButtonProps {
   label: string;
@@ -19,18 +19,18 @@ const DropdownButton = ({ label, items }: DropdownButtonProps) => {
 
   useGSAP(() => {
     if (listRef.current) {
-      gsap.set(listRef.current, { height: 0, opacity: 1, display: "none" });
+      gsap.set(listRef.current, { height: 0, opacity: 1, display: 'none' });
     }
   }, []);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
     gsap.to(listRef.current, {
-      height: isOpen ? 0 : "auto",
+      height: isOpen ? 0 : 'auto',
       opacity: 1,
-      display: isOpen ? "none" : "block",
+      display: isOpen ? 'none' : 'block',
       duration: 0.5,
-      ease: "power2.out",
+      ease: 'power2.out',
     });
   };
 

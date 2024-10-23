@@ -1,4 +1,4 @@
-import PostContainer from "@/components/@Curator/post/PostContainer";
+import PostContainer from './_source/components/post/PostContainer';
 
 const page = () => {
   return <PostContainer />;

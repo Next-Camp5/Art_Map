@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link';
+import React from 'react';
 
-import { FillIconProps } from "./types/icon";
-import themeConfig from "@/configs/theme";
+import { FillIconProps } from './types/icon';
+import themeConfig from '@/configs/theme';
 
-import BaseIcon from "./BaseIcon";
+import BaseIcon from './BaseIcon';
 
 const HomeIcon = ({
   fill = themeConfig.DEFAULT_COLOR,
   ...props
-}: Omit<FillIconProps, "onClick">) => {
+}: Omit<FillIconProps, 'onClick'>) => {
   return (
     <BaseIcon {...props}>
       <Link href="/">

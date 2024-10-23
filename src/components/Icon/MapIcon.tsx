@@ -1,6 +1,6 @@
-import themeConfig from "@/configs/theme";
-import BaseIcon from "./BaseIcon";
-import { FillIconProps } from "./types/icon";
+import themeConfig from '@/configs/theme';
+import BaseIcon from './BaseIcon';
+import { FillIconProps } from './types/icon';
 
 const MapIcon = ({
   fill = themeConfig.DEFAULT_COLOR,

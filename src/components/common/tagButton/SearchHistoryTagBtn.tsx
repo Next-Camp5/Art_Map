@@ -1,4 +1,4 @@
-import BaseTagButton from "./BaseTagButton";
+import BaseTagButton from './BaseTagButton';
 
 const SearchHistoryTagBtn = ({
   className,

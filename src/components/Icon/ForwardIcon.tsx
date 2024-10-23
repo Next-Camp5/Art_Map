@@ -1,8 +1,8 @@
-import React from "react";
-import BaseIcon from "./BaseIcon";
-import { StrokeIconProps } from "./types/icon";
+import React from 'react';
+import BaseIcon from './BaseIcon';
+import { StrokeIconProps } from './types/icon';
 
-const ForwardIcon = ({ stroke = "primary", ...props }: StrokeIconProps) => {
+const ForwardIcon = ({ stroke = 'primary', ...props }: StrokeIconProps) => {
   return (
     <BaseIcon {...props}>
       <path
