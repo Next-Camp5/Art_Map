@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import Modal from "../common/modal/Modal";
-import ToggleButton from "../common/toggleButton/ToggleButton";
-import BorderCircleCheckBox from "../common/checkBox/BorderCircleCheckBox";
-import Button from "../common/Botton";
+
+import Button from "@/components/common/Botton";
+import Modal from "@/components/common/modal/Modal";
+import ToggleButton from "@/components/common/toggleButton/ToggleButton";
+import BorderCircleCheckBox from "@/components/common/checkBox/BorderCircleCheckBox";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
