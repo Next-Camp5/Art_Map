@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useRef } from "react";
+import { useRef } from 'react';
 
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
-import BaseIcon from "@/components/Icon/BaseIcon";
+import BaseIcon from '@/components/Icon/BaseIcon';
 
-import { BaseCheckBoxProps } from "./types/checkbox";
+import { BaseCheckBoxProps } from './types/checkbox';
 
 const CircleCheckBox = ({ active = false, onClick }: BaseCheckBoxProps) => {
   const checkRef = useRef<SVGPathElement>(null);
@@ -25,12 +25,12 @@ const CircleCheckBox = ({ active = false, onClick }: BaseCheckBoxProps) => {
         strokeDashoffset: 50,
         strokeDasharray: 50,
         duration: 1,
-        ease: "power2.inOut",
+        ease: 'power2.inOut',
       },
       {
         strokeDashoffset: 0,
         duration: 1,
-        ease: "power2.inOut",
+        ease: 'power2.inOut',
       }
     );
     if (active) {
@@ -48,7 +48,7 @@ const CircleCheckBox = ({ active = false, onClick }: BaseCheckBoxProps) => {
 
       <path
         d="M24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24C18.6274 24 24 18.6274 24 12Z"
-        className={`${active ? "fill-point" : ""}`}
+        className={`${active ? 'fill-point' : ''}`}
       />
 
       <path

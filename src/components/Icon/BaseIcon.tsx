@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { BaseIconProps } from "./types/icon";
+import { BaseIconProps } from './types/icon';
 
 const BaseIcon = ({
   height = 24,

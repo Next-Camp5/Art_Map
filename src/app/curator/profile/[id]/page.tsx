@@ -1,7 +1,7 @@
-import Button from "@/components/common/Botton";
-import Profile from "@/components/common/profile/Profile";
-import Image from "next/image";
-import React from "react";
+import Button from '@/components/common/Botton';
+import Profile from '@/components/common/profile/Profile';
+import Image from 'next/image';
+import React from 'react';
 
 const page = () => {
   return (

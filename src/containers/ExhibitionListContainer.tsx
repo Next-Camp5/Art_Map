@@ -1,6 +1,6 @@
-import HomeHeader from "@/components/@Layout/HomeHeader";
-import ExhibitionGallery from "@/components/@Home/ExhibitionGallery";
-import ExhibitionListNavigation from "@/components/@Layout/Navigation/ExhibitionListNavigation";
+import HomeHeader from '@/components/@Layout/Header/HomeHeader';
+import ExhibitionGallery from '@/app/exhibition/_source/components/ExhibitionGallery';
+import ExhibitionListNavigation from '@/components/@Layout/Navigation/ExhibitionListNavigation';
 
 const ExhibitionListContainer = () => {
   return (

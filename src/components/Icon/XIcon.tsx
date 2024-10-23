@@ -1,7 +1,7 @@
-import React from "react";
-import BaseIcon from "./BaseIcon";
-import { StrokeIconProps } from "./types/icon";
-import themeConfig from "@/configs/theme";
+import React from 'react';
+import BaseIcon from './BaseIcon';
+import { StrokeIconProps } from './types/icon';
+import themeConfig from '@/configs/theme';
 
 const XIcon = ({ stroke = themeConfig.DEFAULT_COLOR }: StrokeIconProps) => {
   return (

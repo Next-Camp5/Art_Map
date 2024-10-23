@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import BaseTagButton from "./BaseTagButton";
+import BaseTagButton from './BaseTagButton';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isSelect?: boolean;
@@ -26,7 +26,9 @@ const SelectTagButton = ({
   return (
     <BaseTagButton
       onClick={handleClick}
-      className={`${isSelected ? "bg-primary text-white" : "bg-white text-gray-4"} pr-[15px] pl-[15px] text-bold ${className}`}
+      className={`${
+        isSelected ? 'bg-primary text-white' : 'bg-white text-gray-4'
+      } pr-[15px] pl-[15px] text-bold ${className}`}
       {...props}
     >
       {children}

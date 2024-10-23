@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import BaseIcon from "./BaseIcon";
+import BaseIcon from './BaseIcon';
 
-import themeConfig from "@/configs/theme";
-import { FillAndStrokeIconProps } from "./types/icon";
+import themeConfig from '@/configs/theme';
+import { FillAndStrokeIconProps } from './types/icon';
 
 const ShareIcon = ({
   stroke = themeConfig.DEFAULT_COLOR,

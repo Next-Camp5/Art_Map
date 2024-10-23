@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import Image, { StaticImageData } from "next/image";
-import { useState } from "react";
+import Image, { StaticImageData } from 'next/image';
+import { useState } from 'react';
 
 interface Props {
-  size: "XL" | "L" | "M" | "SM";
+  size: 'XL' | 'L' | 'M' | 'SM';
   imageSrc?: string | StaticImageData;
 }
 
-const SIZE_MAP: { [key in Props["size"]]: number } = {
+const SIZE_MAP: { [key in Props['size']]: number } = {
   XL: 90,
   L: 70,
   M: 50,

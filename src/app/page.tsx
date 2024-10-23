@@ -1,11 +1,6 @@
-import HomeContainer from "@/containers/HomeContainer";
-
-const Home = () => {
-  return (
-    <>
-      <HomeContainer />
-    </>
-  );
+import { redirect } from 'next/navigation';
+const page = () => {
+  redirect('/home');
 };
 
-export default Home;
+export default page;

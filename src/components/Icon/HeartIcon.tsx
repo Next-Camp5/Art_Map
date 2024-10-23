@@ -1,7 +1,7 @@
-import themeConfig from "@/configs/theme";
-import BaseIcon from "./BaseIcon";
+import themeConfig from '@/configs/theme';
+import BaseIcon from './BaseIcon';
 
-import { FillAndStrokeIconProps } from "./types/icon";
+import { FillAndStrokeIconProps } from './types/icon';
 
 const HeartIcon = ({
   stroke = themeConfig.DEFAULT_COLOR,

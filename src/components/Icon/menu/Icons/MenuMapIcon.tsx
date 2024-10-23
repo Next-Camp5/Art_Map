@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { usePathname } from "next/navigation";
+import { usePathname } from 'next/navigation';
 
-import themeConfig from "@/configs/theme";
-import { MenuIconProps } from "./types/menuIcon";
+import themeConfig from '@/configs/theme';
+import { MenuIconProps } from './types/menuIcon';
 
-import BaseIcon from "../../BaseIcon";
+import BaseIcon from '../../BaseIcon';
 
 const MenuMapIcon = ({ href, iconName }: MenuIconProps) => {
   const pathname = usePathname();

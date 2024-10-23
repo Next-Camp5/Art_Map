@@ -1,6 +1,6 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { FillIconProps } from "../types/icon";
+import { FillIconProps } from '../types/icon';
 
 interface MenuIconProps extends FillIconProps {
   href: string;

@@ -14,21 +14,21 @@ const createBgOrBorderMap = (
   }, {} as BgOrBorderMap);
 };
 
-const colorArray = ["gray-3", "point", "primary", "white", "none"] as const;
+const colorArray = ['gray-3', 'point', 'primary', 'white', 'none'] as const;
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  size: "XL" | "L" | "M" | "SM" | "NONE";
+  size: 'XL' | 'L' | 'M' | 'SM' | 'NONE';
   children?: React.ReactNode;
   color: (typeof colorArray)[number];
   border: boolean;
 }
 
-const SIZE_MAP: { [k in Props["size"]]: string } = {
-  XL: "w-[343px] h-[50px] rounded-[5px] text-md font-bold",
-  L: "w-[343px] h-[40px] rounded-[5px] text-sm font-bold",
-  M: "w-[165px] h-[40px] rounded-[5px] text-sm font-bold",
-  SM: "w-[88px] h-[30px] rounded-[15px] text-sm font-bold",
-  NONE: "",
+const SIZE_MAP: { [k in Props['size']]: string } = {
+  XL: 'w-[343px] h-[50px] rounded-[5px] text-md font-bold',
+  L: 'w-[343px] h-[40px] rounded-[5px] text-sm font-bold',
+  M: 'w-[165px] h-[40px] rounded-[5px] text-sm font-bold',
+  SM: 'w-[88px] h-[30px] rounded-[15px] text-sm font-bold',
+  NONE: '',
 };
 
 type BgOrBorderMap = {

@@ -1,4 +1,4 @@
-import CuratorContainer from "@/components/@Curator/main/CuratorContainer";
+import CuratorContainer from './_source/components/main/CuratorContainer';
 
 const page = () => {
   return <CuratorContainer />;

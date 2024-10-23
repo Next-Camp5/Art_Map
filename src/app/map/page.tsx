@@ -1,4 +1,4 @@
-import MapContainer from "@/components/@Map/MapContainer";
+import MapContainer from './_source/components/MapContainer';
 
 const page = () => {
   return <MapContainer />;
