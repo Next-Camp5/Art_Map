@@ -1,29 +1,41 @@
-import MapIcon from "@/components/Icon/MapIcon";
 import ART_GALLERIES from "@/mocks/exhibitions";
-import { useState } from "react";
-import { CustomOverlayMap } from "react-kakao-maps-sdk";
+import { useCallback, useState } from "react";
+import { MarkerClusterer } from "react-kakao-maps-sdk";
+import PosMarker from "../marker/PosMarker";
 
 const PosCluster = () => {
   const [active, setActive] = useState<number | null>(null);
+
+  const handleClick = useCallback((idx: number) => {
+    setActive(idx);
+  }, []);
+
   return (
-    <>
+    <MarkerClusterer
+      styles={[
+        {
+          height: "30px",
+          width: "30px",
+          background: "black",
+          color: "white",
+          borderRadius: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        },
+      ]}
+    >
       {ART_GALLERIES.map((artGallery, idx) => (
-        <CustomOverlayMap
+        <PosMarker
           key={artGallery.ART_GALLERY}
-          position={{
-            lat: artGallery.POS_Y,
-            lng: artGallery.POS_X,
-          }}
-        >
-          <MapIcon
-            width={50}
-            height={50}
-            onClick={() => setActive(idx)}
-            fill={`${active === idx ? "point" : "primary"}`}
-          ></MapIcon>
-        </CustomOverlayMap>
+          id={idx}
+          active={active === idx}
+          onClick={handleClick}
+          lat={artGallery.POS_Y}
+          lng={artGallery.POS_X}
+        />
       ))}
-    </>
+    </MarkerClusterer>
   );
 };
 
