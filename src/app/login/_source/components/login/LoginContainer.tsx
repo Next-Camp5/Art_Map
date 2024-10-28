@@ -2,22 +2,23 @@
 
 import Button from '@/components/common/Botton';
 import SNSLoginButton from '@/components/common/snsButton/SNSLoginButton';
-import InputField from './InputField';
+import LoginInputField from './LoginInputField';
 import AutoLogin from './AutoLogin';
 
 const LoginContainer = ({ nextPage }: { nextPage: () => void }) => {
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="flex items-center justify-center bg-gray-100">
         <div className="relative overflow-hidden bg-white w-[375px] h-[812px]">
           <p className="flex justify-center text-extra mt-[60px] font-bold text-center text-primary">
             로그인
           </p>
           {/*이메일 & 비밀번호 input*/}
-          <InputField />
+          <LoginInputField />
           {/*자동로그인*/}
           <div className="flex mt-[20px] m-4 items-center justify-between">
             <AutoLogin />
+            <input type="text" className="hidden" />
             <p className="text-gray-4 underline cursor-pointer">
               비밀번호 찾기
             </p>
