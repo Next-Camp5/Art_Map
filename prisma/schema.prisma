@@ -1,0 +1,195 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model ArtGallery {
+  id                Int          @id @default(autoincrement())
+  name String
+  bgImage           String?
+  posX              Float
+  posY              Float
+  isOpen            Boolean
+  mainAreaId        Int
+  subAreaId         Int
+  location          String
+  openTime          Int
+  endTime           Int
+  lastOrder         Int?
+  ClosedDays        String?
+  phoneNumber       String?
+  callEmail         String?
+  introduce         String?
+  facebook          String?
+  instagram         String?
+  naverBlog         String?
+  homepage          String?
+  createdAt    DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt    DateTime? @updatedAt @db.Timestamptz(6)
+  user              User         @relation(fields: [id], references: [id])
+  mainArea          MainArea     @relation(fields: [mainAreaId], references: [id])
+  subArea           SubArea      @relation(fields: [subAreaId], references: [id])
+  exhibitions       Exhibition[]
+  likedByUsers      LikeArtGallery[]  
+}
+
+model MainArea {
+  id          Int          @id @default(autoincrement())
+  name        String
+  artGalleries ArtGallery[]
+  subArea SubArea[]
+}
+
+model SubArea {
+  id          Int          @id @default(autoincrement())
+  name        String
+  mainAreaId  Int
+  mainArea MainArea @relation(fields: [mainAreaId],references: [id])
+  artGalleries ArtGallery[]
+}
+
+model Exhibition {
+  id                Int              @id @default(autoincrement())
+  title             String
+  image             String
+  startDate         DateTime
+  endDate           DateTime
+  openTime          Int
+  endTime           Int
+  status            ExhibitionStatus
+  introduce         String
+  artGalleryId      Int
+  genreId           Int
+  createdAt    DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt    DateTime? @updatedAt @db.Timestamptz(6)
+  artGallery        ArtGallery       @relation(fields: [artGalleryId], references: [id])
+  genre             Genre            @relation(fields: [genreId], references: [id])
+  artists           Artist[]         @relation("ArtistToExhibition")
+  visitedUsers      Visit[]         
+  likedByUser LikeExhibition[]
+}
+
+model User {
+  id                Int         @id @default(autoincrement())
+  email             String      @unique
+  password          String
+  profileImage      String?
+  createdAt    DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt    DateTime? @updatedAt @db.Timestamptz(6)
+  role              Role        @default(USER)
+  likesArtGallery   LikeArtGallery[]  
+  likesArtwork      LikeArtwork[]     
+  likesArtist       LikeArtist[]      
+  likesExhibition LikeExhibition[]
+  visitsExhibition  Visit[]          
+  artist Artist?
+  artGallery ArtGallery?
+  commonUser CommonUser?
+}
+
+model CommonUser {
+ id  Int @id @default(autoincrement())
+ name String @unique
+ user              User         @relation(fields: [id], references: [id])
+}
+
+model Artist {
+  id                Int          @id @default(autoincrement())
+  phoneNumber       String?
+  name String
+  bgImage           String?
+  mainGenreId       Int
+createdAt    DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt    DateTime? @updatedAt @db.Timestamptz(6)
+  user              User         @relation(fields: [id], references: [id])
+  mainGenre         Genre        @relation(fields: [mainGenreId], references: [id])
+  artworks          Artwork[]
+  exhibitions       Exhibition[] @relation("ArtistToExhibition")
+  likedByUsers      LikeArtist[]  
+}
+
+model Artwork {
+  id                Int          @id @default(autoincrement())
+  title             String
+  image             String
+  ingredients       String
+  size              String
+  genreId           Int
+  artistId          Int
+  artist            Artist        @relation(fields: [artistId], references: [id])
+  genre             Genre         @relation(fields: [genreId], references: [id])
+  likedByUsers      LikeArtwork[] 
+  createdAt    DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt    DateTime? @updatedAt @db.Timestamptz(6)
+}
+model LikeArtGallery {
+  id                Int          @id @default(autoincrement())
+  userId            Int
+  artGalleryId      Int
+  createdAt         DateTime     @default(now())
+  
+  user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  artGallery        ArtGallery   @relation(fields: [artGalleryId], references: [id], onDelete: Cascade)
+}
+
+model LikeArtwork {
+  id                Int          @id @default(autoincrement())
+  userId            Int
+  artworkId         Int
+  createdAt         DateTime     @default(now())
+
+  user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  artwork           Artwork      @relation(fields: [artworkId], references: [id], onDelete: Cascade)
+}
+
+model LikeArtist {
+  id                Int          @id @default(autoincrement())
+  userId            Int
+  artistId          Int
+  createdAt         DateTime     @default(now())
+
+  user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  artist            Artist       @relation(fields: [artistId], references: [id], onDelete: Cascade)
+}
+
+model LikeExhibition {
+  id                Int          @id @default(autoincrement())
+  userId            Int
+  exhibitionId Int
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId],references: [id],onDelete: Cascade)
+  exhibition Exhibition @relation(fields: [exhibitionId],references: [id])
+}
+model Visit {
+  id                Int          @id @default(autoincrement())
+  userId            Int
+  exhibitionId      Int
+  visitedAt         DateTime     @default(now())
+
+  user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  exhibition        Exhibition   @relation(fields: [exhibitionId], references: [id], onDelete: Cascade)
+}
+model Genre {
+  id                Int          @id @default(autoincrement())
+  name              String @unique
+  artists           Artist[]
+  artworks          Artwork[]
+  exhibitions       Exhibition[]
+}
+enum ExhibitionStatus {
+  EXHIBITING
+  UPCOMING
+  FINISHED
+}
+
+enum Role {
+  USER
+  ARTIST
+  ART_GALLERY
+}
