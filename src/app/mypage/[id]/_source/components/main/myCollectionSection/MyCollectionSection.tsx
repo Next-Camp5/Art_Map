@@ -23,7 +23,7 @@ const MyCollectionSection = () => {
         ) : (
           <NoDataMessage />
         )}
-        {/* {DATA && artistData ? (
+        {DATA && artistData ? (
           <ArtistList name={artistData[0].name} genre={artistData[0].genre} />
         ) : (
           <NoDataMessage />
@@ -32,7 +32,7 @@ const MyCollectionSection = () => {
           <ExhibitionList name={exhibitionData[0].name} />
         ) : (
           <NoDataMessage />
-        )} */}
+        )}
       </div>
     </section>
   );
