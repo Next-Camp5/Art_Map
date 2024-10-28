@@ -16,15 +16,14 @@ const MyCollectionSection = () => {
   return (
     <section className="bg-white px-4 flex flex-col min-h-[290px]">
       <SectionHeader title="나의 컬렉션" link="/" />
-      <div>
-        <MyCollectionNav />
-        <div className="flex items-center justify-center flex-grow">
-          {DATA && artworkData ? (
-            <ArtworkList image={artworkData[0].title} />
-          ) : (
-            <NoDataMessage />
-          )}
-          {/* {DATA && artistData ? (
+      <MyCollectionNav />
+      <div className="flex items-center justify-center flex-grow">
+        {DATA && artworkData ? (
+          <ArtworkList image={artworkData[0].title} />
+        ) : (
+          <NoDataMessage />
+        )}
+        {DATA && artistData ? (
           <ArtistList name={artistData[0].name} genre={artistData[0].genre} />
         ) : (
           <NoDataMessage />
@@ -33,8 +32,7 @@ const MyCollectionSection = () => {
           <ExhibitionList name={exhibitionData[0].name} />
         ) : (
           <NoDataMessage />
-        )} */}
-        </div>
+        )}
       </div>
     </section>
   );
