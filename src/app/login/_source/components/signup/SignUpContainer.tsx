@@ -5,7 +5,7 @@ import BackIcon from '@/components/Icon/BackIcon';
 const SignUpContainer = ({ nextPage, prevPage }: HeaderProps) => {
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="flex items-center justify-center bg-gray-100">
         <div className="relative overflow-hidden bg-white w-[375px] h-[812px]">
           <div className="mt-[60px] m-4">
             <BackIcon onClick={prevPage} />
