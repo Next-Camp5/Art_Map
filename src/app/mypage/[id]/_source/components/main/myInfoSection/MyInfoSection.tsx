@@ -7,7 +7,7 @@ import CuratorPickIcon from '/public/svgs/CuratorPick.svg';
 
 const MyInfoSection = () => {
   return (
-    <section className="bg-white px-4">
+    <section className="bg-white px-4 mt-[30px]">
       <h2 className="sr-only">나의 정보</h2>
       <div className="flex items-center gap-[15px]">
         <Profile size="L" aria-label="프로필" />
