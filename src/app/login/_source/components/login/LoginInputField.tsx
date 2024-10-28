@@ -1,4 +1,4 @@
-import InputProps from './InputProps';
+import InputProps from '../input/LoginInputProps';
 
 const EmailIcon = (
   <svg
