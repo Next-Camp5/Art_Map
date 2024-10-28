@@ -1,6 +1,6 @@
 import ExhibitionListContainer from '@/containers/ExhibitionListContainer';
 
-const ExhibitionPage = () => {
+const ExhibitionList = () => {
   return (
     <>
       <ExhibitionListContainer />
@@ -8,4 +8,4 @@ const ExhibitionPage = () => {
   );
 };
 
-export default ExhibitionPage;
+export default ExhibitionList;
