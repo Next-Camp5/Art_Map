@@ -1,20 +1,15 @@
-import { useCallback, useState } from 'react';
 import { MarkerClusterer } from 'react-kakao-maps-sdk';
 import PosMarker from '../marker/PosMarker';
 import { AreaInfo } from '../../actions/exhibitionsAreaInfo';
 
 interface props {
   areaInfo: AreaInfo;
+  onClick: (id: number) => void;
+  selectedArtGalleryId: number | null;
 }
 
-const PosCluster = ({ areaInfo }: props) => {
+const PosCluster = ({ areaInfo, onClick, selectedArtGalleryId }: props) => {
   const { artGalleries } = areaInfo;
-
-  const [active, setActive] = useState<number | null>(null);
-
-  const handleClick = useCallback((idx: number) => {
-    setActive(idx);
-  }, []);
 
   return (
     <MarkerClusterer
@@ -35,8 +30,8 @@ const PosCluster = ({ areaInfo }: props) => {
         <PosMarker
           key={artGallery.id}
           id={artGallery.id}
-          active={active === artGallery.id}
-          onClick={handleClick}
+          active={selectedArtGalleryId === artGallery.id}
+          onClick={onClick}
           lat={artGallery.posX}
           lng={artGallery.posY}
         />

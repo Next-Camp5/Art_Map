@@ -1,7 +1,7 @@
 'use client';
 
 import { Map, useKakaoLoader } from 'react-kakao-maps-sdk';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 
 import GuCluster from './cluster/GuCluster';
 import PosCluster from './cluster/PosCluster';
@@ -9,6 +9,7 @@ import ArtGalleryCluster from './cluster/ArtGalleryCluster';
 import Header from './header/Header';
 import { AreaInfo } from './../actions/exhibitionsAreaInfo';
 import { ZOOM_LEVELS } from '@/constants/map';
+import ExhibitionsContainer from './exhibition/ExhibitionsContainer';
 
 const {
   MAIN_CLUSTER,
@@ -34,6 +35,13 @@ const KaKaoMap = ({ areaInfo }: props) => {
     posX: number;
     posY: number;
   } | null>(null);
+  const [selectedArtGalleryId, setSelectedArtGalleryId] = useState<
+    number | null
+  >(null);
+
+  const handlePosClick = (id: number) => {
+    setSelectedArtGalleryId(id);
+  };
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -86,11 +94,20 @@ const KaKaoMap = ({ areaInfo }: props) => {
         )}
         {zoomLevel <= POS_CLUSTER &&
           zoomLevel > ART_GALLERY_CLUSTER &&
-          !isZooming && <PosCluster areaInfo={areaInfo} />}
+          !isZooming && (
+            <PosCluster
+              areaInfo={areaInfo}
+              selectedArtGalleryId={selectedArtGalleryId}
+              onClick={handlePosClick}
+            />
+          )}
         {zoomLevel <= ART_GALLERY_CLUSTER && !isZooming && (
           <ArtGalleryCluster areaInfo={areaInfo} />
         )}
       </Map>
+      {selectedArtGalleryId && (
+        <ExhibitionsContainer selectedArtGalleryId={selectedArtGalleryId} />
+      )}
     </>
   );
 };
