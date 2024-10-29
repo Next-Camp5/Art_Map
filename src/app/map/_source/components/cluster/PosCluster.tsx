@@ -1,9 +1,15 @@
-import ART_GALLERIES from '@/mocks/exhibitions';
 import { useCallback, useState } from 'react';
 import { MarkerClusterer } from 'react-kakao-maps-sdk';
 import PosMarker from '../marker/PosMarker';
+import { AreaInfo } from '../../actions/exhibitionsAreaInfo';
 
-const PosCluster = () => {
+interface props {
+  areaInfo: AreaInfo;
+}
+
+const PosCluster = ({ areaInfo }: props) => {
+  const { artGalleries } = areaInfo;
+
   const [active, setActive] = useState<number | null>(null);
 
   const handleClick = useCallback((idx: number) => {
@@ -25,14 +31,14 @@ const PosCluster = () => {
         },
       ]}
     >
-      {ART_GALLERIES.map((artGallery, idx) => (
+      {artGalleries.map((artGallery) => (
         <PosMarker
-          key={artGallery.ART_GALLERY}
-          id={idx}
-          active={active === idx}
+          key={artGallery.id}
+          id={artGallery.id}
+          active={active === artGallery.id}
           onClick={handleClick}
-          lat={artGallery.POS_Y}
-          lng={artGallery.POS_X}
+          lat={artGallery.posX}
+          lng={artGallery.posY}
         />
       ))}
     </MarkerClusterer>

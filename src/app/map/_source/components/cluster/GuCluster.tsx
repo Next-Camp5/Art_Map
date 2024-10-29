@@ -1,40 +1,41 @@
-import ART_GALLERIES from '@/mocks/exhibitions';
-import GU_INFO from '@/mocks/guInfo';
-
 import { CustomOverlayMap } from 'react-kakao-maps-sdk';
 import GuMarker from '../marker/GuMarker';
+import { AreaInfo } from '../../actions/exhibitionsAreaInfo';
 
-const GuCluster = () => {
-  const guExhibitionObject = ART_GALLERIES.reduce(
-    (acc: { [key: string]: number }, cur) => {
-      return {
-        ...acc,
-        [cur.DISTRICT]: acc[cur.DISTRICT] ? acc[cur.DISTRICT] + 1 : 1,
-      };
-    },
-    {}
-  );
+interface props {
+  areaInfo: AreaInfo;
+  isMain: boolean;
+}
 
-  const guExhibitions = Object.keys(guExhibitionObject).map((key) => ({
-    name: key,
-    count: guExhibitionObject[key],
-  }));
+const GuCluster = ({ areaInfo, isMain }: props) => {
+  const mainAreas = areaInfo.main;
+  const subAreas = areaInfo.sub;
+
   return (
     <>
-      {guExhibitions.map((guExhibition) => (
-        <CustomOverlayMap
-          key={guExhibition.name}
-          position={{
-            lat: GU_INFO[guExhibition.name].POS_Y,
-            lng: GU_INFO[guExhibition.name].POS_X,
-          }}
-        >
-          <GuMarker
-            name={guExhibition.name}
-            count={guExhibition.count}
-          ></GuMarker>
-        </CustomOverlayMap>
-      ))}
+      {isMain
+        ? mainAreas.map((mainArea) => (
+            <CustomOverlayMap
+              key={mainArea.id}
+              position={{
+                lat: mainArea.posX,
+                lng: mainArea.posY,
+              }}
+            >
+              <GuMarker name={mainArea.name} count={mainArea.count}></GuMarker>
+            </CustomOverlayMap>
+          ))
+        : subAreas.map((subArea) => (
+            <CustomOverlayMap
+              key={subArea.id}
+              position={{
+                lat: subArea.posX,
+                lng: subArea.posY,
+              }}
+            >
+              <GuMarker name={subArea.name} count={subArea.count}></GuMarker>
+            </CustomOverlayMap>
+          ))}
     </>
   );
 };
