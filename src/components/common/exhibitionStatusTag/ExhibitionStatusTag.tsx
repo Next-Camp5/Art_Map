@@ -1,4 +1,4 @@
-type state = 'ACTIVE' | 'UPCOMING' | 'CLOSED';
+type state = 'EXHIBITING' | 'UPCOMING' | 'FINISHED';
 
 interface Props {
   state: state;
@@ -6,15 +6,15 @@ interface Props {
 }
 
 const STATE_COLOR_MAP: { [key in state]: string } = {
-  ACTIVE: 'point',
-  CLOSED: 'primary',
-  UPCOMING: 'gray-3',
+  EXHIBITING: 'point',
+  UPCOMING: 'primary',
+  FINISHED: 'gray-3',
 };
 
 const STATE_NAME_MAP: { [key in state]: string } = {
-  ACTIVE: '전시중',
-  CLOSED: '업커밍',
-  UPCOMING: '전시종료',
+  EXHIBITING: '전시중',
+  UPCOMING: '업커밍',
+  FINISHED: '전시종료',
 };
 
 const ExhibitionStatusTag = ({ state, isBorder = false }: Props) => {
