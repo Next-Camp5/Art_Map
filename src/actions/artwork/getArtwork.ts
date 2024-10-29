@@ -1,3 +1,5 @@
+'use server';
+
 import artworkService from '@/services/artwork/artworkService';
 
 export const getArtworks = (count: number = 10) => {

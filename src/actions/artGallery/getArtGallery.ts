@@ -1,3 +1,5 @@
+'use server';
+
 import artGalleryService from '@/services/artGallery/artGalleryService';
 
 export const getArtGalleries = (count: number = 10) => {
