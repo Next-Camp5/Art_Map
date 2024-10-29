@@ -1,3 +1,5 @@
+'use server';
+
 import exhibitionService from './../../services/exhibition/exhibitionService';
 
 export const getExhibition = (id: number) => {
@@ -10,4 +12,11 @@ export const getExhibitions = (count: number = 10) => {
 
 export const getSimpleExhibitions = (count: number = 10) => {
   return exhibitionService.getSimpleExhibitions(count);
+};
+
+export const getSimpleExhibitionsByArtGalleryId = (
+  id: number,
+  count: number = 10
+) => {
+  return exhibitionService.getSimpleExhibitionsByArtGalleryId(id, count);
 };

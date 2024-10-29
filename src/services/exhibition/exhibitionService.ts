@@ -22,7 +22,32 @@ class ExhibitionService {
       ...exhibitionDefaultQuery,
     });
   }
+  public async getSimpleExhibitionsByArtGalleryId(id: number, count: number) {
+    return this.prisma.artGallery.findUniqueOrThrow({
+      where: { id },
 
+      select: {
+        exhibitions: {
+          select: {
+            id: true,
+            title: true,
+            image: true,
+            startDate: true,
+            endDate: true,
+            status: true,
+            artGallery: {
+              select: {
+                id: true,
+                name: true,
+                ClosedDays: true,
+              },
+            },
+          },
+          take: count,
+        },
+      },
+    });
+  }
   public async getSimpleExhibitions(count: number) {
     return this.prisma.exhibition.findMany({
       select: {
@@ -31,10 +56,12 @@ class ExhibitionService {
         image: true,
         startDate: true,
         endDate: true,
+        status: true,
         artGallery: {
           select: {
             id: true,
             name: true,
+            ClosedDays: true,
           },
         },
       },
