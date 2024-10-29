@@ -1,3 +1,4 @@
+// ImageRegistBtn.tsx
 'use client';
 
 import Image from 'next/image';
@@ -5,20 +6,26 @@ import { useState } from 'react';
 
 interface ImageRegistBtnProps {
   fillColor?: string;
+  onImageChange: (base64Image: string) => void;
 }
 
-const ImageRegistBtn = ({ fillColor = 'gray-3' }: ImageRegistBtnProps) => {
+const ImageRegistBtn = ({
+  fillColor = 'gray-3',
+  onImageChange,
+}: ImageRegistBtnProps) => {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [isRegistered, setIsRegistered] = useState(false); // 작품 등록 상태
-  const [showAlert, setShowAlert] = useState(false); // 안내 문구 표시 상태
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        setPreviewUrl(reader.result as string);
-        setIsRegistered(true); // 작품이 등록되었음을 표시
+        const base64Image = reader.result as string;
+        setPreviewUrl(base64Image);
+        setIsRegistered(true);
+        onImageChange(base64Image);
       };
       reader.readAsDataURL(file);
     }
@@ -26,13 +33,12 @@ const ImageRegistBtn = ({ fillColor = 'gray-3' }: ImageRegistBtnProps) => {
 
   const handleLabelClick = (e: React.MouseEvent<HTMLLabelElement>) => {
     if (isRegistered) {
-      e.preventDefault(); // 파일 선택창이 바로 열리는 것을 막음
-      setShowAlert(true); // 작품 등록 시 안내 문구 표시
+      e.preventDefault();
+      setShowAlert(true);
     }
   };
 
   const handleAlertConfirm = () => {
-    // 안내 문구 확인 후 파일 선택 가능
     setShowAlert(false);
     document.getElementById('file')?.click();
   };
@@ -77,12 +83,10 @@ const ImageRegistBtn = ({ fillColor = 'gray-3' }: ImageRegistBtnProps) => {
         id="file"
         className="hidden"
         type="file"
-        multiple
         accept="image/*"
         onChange={handleFileChange}
       />
 
-      {/* 안내 문구 표시 */}
       {showAlert && (
         <div className="fixed inset-0 flex max-w-[375px] mx-auto items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white rounded-lg text-center">
