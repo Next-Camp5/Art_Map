@@ -2,16 +2,13 @@
 
 import Button from '@/components/common/Botton';
 import InputField from '../input/SignUpInputField';
+
 import { useState } from 'react';
 import { HeaderProps } from '../types/HeaderProps';
+import { isValidEmail } from './ValidateEmail';
 
 const EmailInputField = ({ nextPage }: HeaderProps) => {
   const [email, setEmail] = useState('');
-  const isValidEmail = (value: string) => {
-    const emailPattern: RegExp =
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailPattern.test(value);
-  };
 
   return (
     <>

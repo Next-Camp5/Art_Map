@@ -8,6 +8,7 @@ import ProfileContainer from './profile/ProfileContainer';
 import PWVeriContainer from './pwveri/PWVeriContainer';
 import SignUpContainer from './signup/SignUpContainer';
 import TermContainer from './term/TermContainer';
+import Preference from '@/app/preference/page';
 
 const components = [
   LoginContainer,
@@ -16,6 +17,7 @@ const components = [
   PWVeriContainer,
   ProfileContainer,
   TermContainer,
+  Preference,
 ];
 const MainLogin = () => {
   const [id, setId] = useState(0);
