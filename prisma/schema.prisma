@@ -1,15 +1,17 @@
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
 }
 
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
+  schemas           = ["public", "auth"]
 }
 
 model ArtGallery {
-  id                Int          @id @default(autoincrement())
+  id                String          @id
   name String
   bgImage           String?
   posX              Float
@@ -30,12 +32,14 @@ model ArtGallery {
   naverBlog         String?
   homepage          String?
   createdAt    DateTime @default(now()) @db.Timestamptz(6)
-  updatedAt    DateTime? @updatedAt @db.Timestamptz(6)
+  updatedAt    DateTime @updatedAt @db.Timestamptz(6)
   user              User         @relation(fields: [id], references: [id])
   mainArea          MainArea     @relation(fields: [mainAreaId], references: [id])
   subArea           SubArea      @relation(fields: [subAreaId], references: [id])
   exhibitions       Exhibition[]
   likedByUsers      LikeArtGallery[]  
+
+  @@schema("public")
 }
 
 model MainArea {
@@ -43,6 +47,8 @@ model MainArea {
   name        String
   artGalleries ArtGallery[]
   subArea SubArea[]
+
+  @@schema("public")
 }
 
 model SubArea {
@@ -51,6 +57,8 @@ model SubArea {
   mainAreaId  Int
   mainArea MainArea @relation(fields: [mainAreaId],references: [id])
   artGalleries ArtGallery[]
+
+  @@schema("public")
 }
 
 model Exhibition {
@@ -63,24 +71,26 @@ model Exhibition {
   endTime           Int
   status            ExhibitionStatus
   introduce         String
-  artGalleryId      Int
+  artGalleryId      String
   genreId           Int
   createdAt    DateTime @default(now()) @db.Timestamptz(6)
-  updatedAt    DateTime? @updatedAt @db.Timestamptz(6)
+  updatedAt    DateTime @updatedAt @db.Timestamptz(6)
   artGallery        ArtGallery       @relation(fields: [artGalleryId], references: [id])
   genre             Genre            @relation(fields: [genreId], references: [id])
   artists           Artist[]         @relation("ArtistToExhibition")
   visitedUsers      Visit[]         
   likedByUser LikeExhibition[]
+
+  @@schema("public")
 }
 
 model User {
-  id                Int         @id @default(autoincrement())
+  id                String         @id @default(uuid())
   email             String      @unique
   password          String
   profileImage      String?
   createdAt    DateTime @default(now()) @db.Timestamptz(6)
-  updatedAt    DateTime? @updatedAt @db.Timestamptz(6)
+  updatedAt    DateTime @updatedAt @db.Timestamptz(6)
   role              Role        @default(USER)
   likesArtGallery   LikeArtGallery[]  
   likesArtwork      LikeArtwork[]     
@@ -90,27 +100,33 @@ model User {
   artist Artist?
   artGallery ArtGallery?
   commonUser CommonUser?
+
+  @@schema("public")
 }
 
 model CommonUser {
- id  Int @id @default(autoincrement())
+ id  String @id 
  name String @unique
  user              User         @relation(fields: [id], references: [id])
+
+ @@schema("public")
 }
 
 model Artist {
-  id                Int          @id @default(autoincrement())
+  id                String        @id 
   phoneNumber       String?
   name String
   bgImage           String?
   mainGenreId       Int
 createdAt    DateTime @default(now()) @db.Timestamptz(6)
-  updatedAt    DateTime? @updatedAt @db.Timestamptz(6)
+  updatedAt    DateTime @updatedAt @db.Timestamptz(6)
   user              User         @relation(fields: [id], references: [id])
   mainGenre         Genre        @relation(fields: [mainGenreId], references: [id])
   artworks          Artwork[]
   exhibitions       Exhibition[] @relation("ArtistToExhibition")
   likedByUsers      LikeArtist[]  
+
+  @@schema("public")
 }
 
 model Artwork {
@@ -120,60 +136,72 @@ model Artwork {
   ingredients       String
   size              String
   genreId           Int
-  artistId          Int
+  artistId          String
   artist            Artist        @relation(fields: [artistId], references: [id])
   genre             Genre         @relation(fields: [genreId], references: [id])
   likedByUsers      LikeArtwork[] 
   createdAt    DateTime @default(now()) @db.Timestamptz(6)
-  updatedAt    DateTime? @updatedAt @db.Timestamptz(6)
+  updatedAt    DateTime @updatedAt @db.Timestamptz(6)
+
+  @@schema("public")
 }
 model LikeArtGallery {
   id                Int          @id @default(autoincrement())
-  userId            Int
-  artGalleryId      Int
+  userId            String
+  artGalleryId      String
   createdAt         DateTime     @default(now())
   
   user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   artGallery        ArtGallery   @relation(fields: [artGalleryId], references: [id], onDelete: Cascade)
+
+  @@schema("public")
 }
 
 model LikeArtwork {
   id                Int          @id @default(autoincrement())
-  userId            Int
+  userId            String
   artworkId         Int
   createdAt         DateTime     @default(now())
 
   user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   artwork           Artwork      @relation(fields: [artworkId], references: [id], onDelete: Cascade)
+
+  @@schema("public")
 }
 
 model LikeArtist {
   id                Int          @id @default(autoincrement())
-  userId            Int
-  artistId          Int
+  userId            String
+  artistId          String
   createdAt         DateTime     @default(now())
 
   user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   artist            Artist       @relation(fields: [artistId], references: [id], onDelete: Cascade)
+
+  @@schema("public")
 }
 
 model LikeExhibition {
   id                Int          @id @default(autoincrement())
-  userId            Int
+  userId            String
   exhibitionId Int
   createdAt DateTime @default(now())
 
   user User @relation(fields: [userId],references: [id],onDelete: Cascade)
   exhibition Exhibition @relation(fields: [exhibitionId],references: [id])
+
+  @@schema("public")
 }
 model Visit {
   id                Int          @id @default(autoincrement())
-  userId            Int
+  userId            String
   exhibitionId      Int
   visitedAt         DateTime     @default(now())
 
   user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   exhibition        Exhibition   @relation(fields: [exhibitionId], references: [id], onDelete: Cascade)
+
+  @@schema("public")
 }
 model Genre {
   id                Int          @id @default(autoincrement())
@@ -181,15 +209,21 @@ model Genre {
   artists           Artist[]
   artworks          Artwork[]
   exhibitions       Exhibition[]
+
+  @@schema("public")
 }
 enum ExhibitionStatus {
   EXHIBITING
   UPCOMING
   FINISHED
+
+  @@schema("public")
 }
 
 enum Role {
   USER
   ARTIST
   ART_GALLERY
+
+  @@schema("public")
 }
